@@ -2,30 +2,144 @@
 <html lang="en">
 
 <head>
+    <title>Project One</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
 
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-    <title>Project One</title>
+    <!-- Link for javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+
 </head>
 
 <body>
+    <div class="container" style="border: 2px solid grey">
 
-    <!-- jquery  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
-    <script src="app.js">
-    </script>
+        <form>
+            <!-- Location zip -->
+            <div class="form-group">
+                <label for="zipInput">Location</label>
+                <input type="text" class="form-control" id="zip" placeholder="zip">
+            </div>
 
+            <!-- Distance -->
+            <div class="form-group">
+                <label for="distanceInput">Distance</label>
+                <input type="text" class="form-control" id="distance" placeholder="miles">
+            </div>
+
+            <!-- User 1 inputs -->
+            <div class="form-group">
+                <label for="formGroupExampleInput2">User1</label>
+                <!-- Dropdown for user1: input #1 -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Choice 1
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="user1-Choice1">
+                        <a class="dropdown-item" href="#">Italian</a>
+                        <a class="dropdown-item" href="#">Chinese</a>
+                        <a class="dropdown-item" href="#">Thai</a>
+                    </div>
+                </div>
+                <br>
+                <!-- Dropdown for user1: input #2 -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice2" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Choice 2
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="user1-Choice2">
+                        <a class="dropdown-item" href="#">Italian</a>
+                        <a class="dropdown-item" href="#">Chinese</a>
+                        <a class="dropdown-item" href="#">Thai</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--User 2 inputs  -->
+
+            <div class="form-group">
+                <label for="formGroupExampleInput2">User2</label>
+                <!-- Dropdown for user2: input #1 -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice1" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Choice 1
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="user1-Choice1">
+                        <a class="dropdown-item" href="#">Italian</a>
+                        <a class="dropdown-item" href="#">Chinese</a>
+                        <a class="dropdown-item" href="#">Thai</a>
+                    </div>
+                </div>
+                <br>
+                <!-- Dropdown for user2: input #2 -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice2" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Choice 2
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="user1-Choice2">
+                        <a class="dropdown-item" href="#">Italian</a>
+                        <a class="dropdown-item" href="#">Chinese</a>
+                        <a class="dropdown-item" href="#">Thai</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit button for user input -->
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+        <!-- Form for user input close -->
+    </div>
+    <br>
+    <!-- Search results to be displayed -->
+    <div class="container" style="border: 2px solid grey">
+        <!-- row for the food type result -->
+        <div class="row">
+            <div class="col-sm">
+                <label for="formGroupExampleInput2">Food type selected</label>
+                <span>
+                    <h1 id="food-Decision"></h1>
+                    Your food result goes here</span>
+            </div>
+        </div>
+
+        <!-- row for the searched locations -->
+        <div class="row">
+            <div class="col-sm">
+                <label for="formGroupExampleInput2">Location results</label>
+                <div id="location-Result">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js" />
 </body>
 
 </html>
