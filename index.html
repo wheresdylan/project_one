@@ -32,32 +32,25 @@
 
 <body class="bg">
 
-    <div class="container">
+    <div class="container" id="welcomePage">
         <div class="row">
             <div class="col-sm-4">
-
             </div>
             <div class="col-sm-5 welcomePage">
                 <h2 style="color: white">Food Decider</h2>
                 <div class="panel panel-default" style="color: white">
                     <div class="panel-heading">Are you feeling hungry and cannot decide what to eat click below!!!</div>
                     <div class="panel-body">
-                        <button id="start" class="btn btnStyle" onClick="show();">Get Started</button>
+                        <button id="getStarted" class="btn btnStyle" onClick="show();">Get Started</button>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
-
             </div>
-
         </div>
-
-
-
-
     </div>
 
-    <div class="container rounded" style="border: 2px solid grey; display:none; background: white">
+    <div class="container rounded" id="userChoiceForm" style="border: 2px solid grey; display:none; background: white">
 
         <form>
             <!-- Location zip -->
@@ -134,14 +127,14 @@
             </div>
 
             <!-- Submit button for user input -->
-            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="submit" onClick="show();" class="btn btn-primary">Submit</button>
 
         </form>
         <!-- Form for user input close -->
     </div>
 
     <!-- Search results to be displayed -->
-    <div class="container rounded" style="border: 2px solid grey; display:none">
+    <div class="container rounded" id="userResult" style="border: 2px solid grey; background: white; display:none">
         <!-- row for the food type result -->
         <div class="row">
             <div class="col-sm">
@@ -151,18 +144,17 @@
                     Your food result goes here</span>
             </div>
         </div>
-
         <!-- row for the searched locations -->
         <div class="row">
             <div class="col-sm">
                 <label for="formGroupExampleInput2">Location results</label>
                 <div id="location-Result">
-
+                    <!-- To Do -->
                 </div>
             </div>
         </div>
-
     </div>
+
     <script src="app.js"> </script>
 </body>
 
