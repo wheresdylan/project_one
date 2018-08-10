@@ -23,8 +23,6 @@ function showUserDecision() {
 
 $(document).ready(function () {
 
-    $(".container").hide();
-
     //food variables
     var BBQ = 193;
     var italian = 55;
