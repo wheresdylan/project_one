@@ -19,16 +19,16 @@ var db = firebase.database();
 
 
 //Setting variables for the user's choice inputs:
-    // Below is active code other is for testing
-        // var userOneChoiceOne = $("#user1-choice1");
-        // var userOneChoiceTwo = $("#user1-choice2");
-        // var userTwoChoiceOne = $("#user2-choice1");
-        // var userTwoChoiceTwo = $("#user2-choice2");
+    
+        var userOneChoiceOne = $("#user1-Choice1");
+        var userOneChoiceTwo = $("#user1-Choice2");
+        var userTwoChoiceOne = $("#user2-Choice1");
+        var userTwoChoiceTwo = $("#user2-Choice2");
 
-var userOneChoiceOne = "BBQ";
-var userOneChoiceTwo = "chinese";
-var userTwoChoiceOne = "indian";
-var userTwoChoiceTwo = "vegetarian";
+// var userOneChoiceOne = "BBQ";
+// var userOneChoiceTwo = "chinese";
+// var userTwoChoiceOne = "indian";
+// var userTwoChoiceTwo = "vegetarian";
 
 
 //Document ready check
