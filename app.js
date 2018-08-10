@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
     $(".container").hide();
@@ -22,7 +24,7 @@ $(document).ready(function () {
     var locationLatitude;
     var locationLongitude;
 
-    var radius = 16093;
+    var radius = 1609.34;
 
     //restauraunt variables
 
@@ -64,6 +66,8 @@ $(document).ready(function () {
         locationLatitude = response.results[0].geometry.location.lat;
         locationLongitude = response.results[0].geometry.location.lng;
 
+        initMap(locationLatitude, locationLongitude);
+
         //url to the zomato api that gets restaurants near me 
         var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
@@ -72,6 +76,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             // console.log(response.restaurants[0].restaurant);
+
             for (var i = 0; i < 10; i++) {
                 averageCost = (response.restaurants[i].restaurant.average_cost_for_two);
                 restaurantId = (response.restaurants[i].restaurant.id);
@@ -114,58 +119,7 @@ $(document).ready(function () {
 
     });
 
-    function initMap() {
-        // Map options
-        var options = {
-            zoom: 8,
-            center: { lat: 31.9686, lng: -99.9018 }
-        }
 
-        // New map
-        var map = new google.maps.Map(document.getElementById('map'), options);
-
-        // Array of markers
-        var markers = [
-
-            {
-                coords: { lat: 30.2471972222, lng: -97.7507250000 },
-                content: '<h1>Enoteca Vespaio</h1>'
-            }
-
-        ];
-
-        // Loop through markers
-        for (var i = 0; i < markers.length; i++) {
-            // Add marker
-            addMarker(markers[i]);
-        }
-
-        // Add Marker Function
-        function addMarker(props) {
-            var marker = new google.maps.Marker({
-                position: props.coords,
-                map: map,
-                //icon:props.iconImage
-            });
-
-            // Check for customicon
-            if (props.iconImage) {
-                // Set icon image
-                marker.setIcon(props.iconImage);
-            }
-
-            // Check content
-            if (props.content) {
-                var infoWindow = new google.maps.InfoWindow({
-                    content: props.content
-                });
-
-                marker.addListener('click', function () {
-                    infoWindow.open(map, marker);
-                });
-            }
-        }
-    }
 
 
     //Cuisines near me with city id and longitude/latitude
@@ -179,6 +133,144 @@ $(document).ready(function () {
     });
 
 });
+
+
+//this is where the map is displayed and populated
+
+var zipCode = 78741;
+
+var locationLatitude;
+var locationLongitude;
+
+var radius = 1609.34;
+
+var BBQ = 193;
+var italian = 55;
+var chinese = 25;
+var thai = 95;
+var american = 1;
+var seafood = 83;
+var vietnamese = 99;
+var vegetarian = 308;
+var pizza = 82;
+var mexican = 73;
+var indian = 148;
+var desserts = 100;
+
+
+function initMap(x,y) {
+    // Map options
+    var options = {
+        zoom: 10,
+        center: { lat: x, lng: y }
+    }
+
+    // New map
+    var map = new google.maps.Map(document.getElementById('map'), options);
+
+    markMap();
+
+    // Add Marker Function
+    function addMarker(props) {
+        var marker = new google.maps.Marker({
+            position: props.coords,
+            map: map,
+            //icon:props.iconImage
+        });
+
+        // Check content
+        if (props.content) {
+            var infoWindow = new google.maps.InfoWindow({
+                content: props.content
+            });
+
+            marker.addListener('click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
+    }
+
+    function markMap() {
+        var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
+
+        //ajax call to get locations latitude and longitude depending on zipcode
+        $.ajax({
+            url: google,
+            method: "GET"
+        }).then(function (response) {
+
+             console.log(response);
+
+            locationLatitude = response.results[0].geometry.location.lat;
+            locationLongitude = response.results[0].geometry.location.lng;
+            
+
+            //url to the zomato api that gets restaurants near me 
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
+
+            $.ajax({
+                url: zomatoNearMe,
+                method: "GET"
+            }).then(function (response) {
+
+                    //array of markers
+                    var markers = [
+
+                        {
+                            coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng:parseFloat(response.restaurants[0].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[0].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng:parseFloat(response.restaurants[1].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[1].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng:parseFloat(response.restaurants[2].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[2].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng:parseFloat(response.restaurants[3].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[3].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng:parseFloat(response.restaurants[4].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[4].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng:parseFloat(response.restaurants[5].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[5].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng:parseFloat(response.restaurants[6].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[6].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng:parseFloat(response.restaurants[7].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[7].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng:parseFloat(response.restaurants[8].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[8].restaurant.name + '</h1>'
+                        },
+                        {
+                            coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng:parseFloat(response.restaurants[9].restaurant.location.longitude) },
+                            content: '<h1>' + response.restaurants[9].restaurant.name + '</h1>'
+                        }
+
+                    ];
+
+                    //populating the markers
+
+                    for (var i = 0; i < markers.length; i++) {
+                        // Add marker
+                        addMarker(markers[i]);
+                    }
+                
+            });
+
+        });
+    }
+}
 
 
 
