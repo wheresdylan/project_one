@@ -18,13 +18,46 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <!-- jquery  -->
+    <!-- Bootstrap for dropdown -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <!-- Our Specific CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-    <div class="container" style="border: 2px solid grey">
+<body class="bg">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-5 welcomePage">
+                <h2 style="color: white">Food Decider</h2>
+                <div class="panel panel-default" style="color: white">
+                    <div class="panel-heading">Are you feeling hungry and cannot decide what to eat click below!!!</div>
+                    <div class="panel-body">
+                        <button id="start" class="btn btnStyle" onClick="show();">Get Started</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <div class="container rounded" style="border: 2px solid grey; display:none; background: white">
 
         <form>
             <!-- Location zip -->
@@ -106,9 +139,9 @@
         </form>
         <!-- Form for user input close -->
     </div>
-    <br>
+
     <!-- Search results to be displayed -->
-    <div class="container" style="border: 2px solid grey">
+    <div class="container rounded" style="border: 2px solid grey; display:none">
         <!-- row for the food type result -->
         <div class="row">
             <div class="col-sm">
