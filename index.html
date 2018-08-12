@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-sm-1">
             </div>
-            <div class="col-sm-10 welcomePage">
+            <div class="col-sm-10" id="welcome-body">
                 <h2>The Great Food Feud:</h2>
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -47,14 +47,13 @@
         </div>
     </div>
 
-    <div class="container rounded" id="userChoiceForm" display: "hidden">
+    <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
             <div class="col-sm-1">
                 <!-- Intentionally Blank -->
             </div>
 
-            <div class="col-sm-10">
-
+            <div class="col-sm-10" id="ucer-choice-body">
                 <form>
                     <!-- Location zip -->
                     <div class="form-group">
@@ -139,14 +138,14 @@
     </div>
 
     <!-- Search results to be displayed -->
-    <div class="container rounded" display="visible">
+    <div class="container rounded"  id="userResult" style="display: none;">
         <!-- row for the food type result -->
         <div class="row">
             <div class="col-sm-1">
                 <!-- Intentionally Blank -->
             </div>
 
-            <div class="col-sm-10" id="userResult">
+            <div class="col-sm-10" id="user-result-body">
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="formGroupExampleInput2">Food type selected</label>

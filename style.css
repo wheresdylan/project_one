@@ -4,15 +4,16 @@ body, html {
 
 .bg { 
     /* The image used */
-    /* background-image:
+    background-image:
     linear-gradient(
-        315deg,
-      transparent,
-      black 48%,
-      black 52%,
-      transparent 100%
-    ),
-    url("https://images.pexels.com/photos/54455/cook-food-kitchen-eat-54455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350"); */
+        to right,
+    transparent,
+    transparent 42%,
+    black 49%,
+    black 51%,
+    transparent 58%,
+    transparent 100%
+    ), url("https://images.pexels.com/photos/54455/cook-food-kitchen-eat-54455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350");
 
     /* Full height */
     height: 100%; 
@@ -20,11 +21,10 @@ body, html {
     /* Center and scale the image nicely */
     background-color: rgb(35, 37, 40);
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
 
-.welcomePage{
+#none{
     background-image:
     linear-gradient(
         to right,
@@ -58,9 +58,9 @@ form{
   .form-control{
       padding: 0px, 15px;
   }
-  #userResult{
+  #none{
       background-image: url("assets/images/patrick-browne-568830-unsplash.jpg");
-      background-color: green;
+      background-color:#aaa;
       background-size: 100%;
       width: auto;
   }
