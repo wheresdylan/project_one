@@ -69,29 +69,7 @@
 
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
-            <div class="col-sm-12" id="user-choice-body">
-                <form id='top-form'>
-                    <!-- Location zip -->
-                    <div class="form-group">
-                        <label for="zipInput">Location</label>
-                        <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
-                    </div>
-
-                    <!-- Distance -->
-                    <div class="form-group">
-                        <label for="distanceInput">Distance</label>
-                        <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
-                    </div>
-
-                    <button type="submit" id="submitZipCode"  class="btn btn-primary">Submit</button>
-
-                </form>
-            </div>
-        </div>    
-    </div>
-    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
-    
-                    <!-- User 1 inputs -->
+            <div class="col-sm-6" id="user-choice-body">
                 <form id='left-form'>  
                     <div class="form-group">
                         <label for="formGroupExampleInput2">User1</label>
@@ -113,12 +91,12 @@
                                 Select a second pick...
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                           
                             </div>
                         </div>
                     </div>
                 </form>
-                    <!--User 2 inputs  -->
+            </div>
+            <div class="col-sm-6" id="user-choice-body">
                 <form id='right-form'> 
                     <div class="form-group">
                         <label for="formGroupExampleInput2">User2</label>
@@ -147,6 +125,8 @@
                     <!-- Submit button for user input -->
                     <button type="submit" id="submitUserChoice" class="btn btn-primary">Submit</button>
                 </form>
+            </div>
+        </div>    
     </div>
 
     <!-- Search results to be displayed -->
