@@ -3,11 +3,31 @@ $(document).ready(function () {
 
     $("#getStarted").on("click", function () {
         // showUserForm();
+        newBackgroundPlain();
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
         $('#userChoiceForm').show();
     })
 
+
+
+
+/// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
+var randBG = Math.floor(Math.random() * 12) + 1;
+var newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+
+
+function newRandBG() {
+    randBG = Math.floor(Math.random() * 12) + 1;
+}
+function newBackground() {
+    newRandBG();
+    newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+}
+function newBackgroundPlain() {
+    newRandBG();
+    newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%, transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+}
 
     function showUserDecision() {
         event.preventDefault();
@@ -15,6 +35,7 @@ $(document).ready(function () {
         $('#userChoiceFormTwo').hide();
         $('#userChoiceForm').hide();
         $('#userResult').show();
+        newBG = newBG;
     }
 
 
@@ -25,6 +46,7 @@ $(document).ready(function () {
 
     $("#submitZipCode").on("click", function () {
         // showUserDecision();
+        newBackgroundPlain();
         event.preventDefault();
         $('#userChoiceForm').hide();
 
@@ -93,6 +115,7 @@ $(document).ready(function () {
             });
 
             $("#submitUserChoice").on("click", function () {
+                newBackgroundPlain();
                 showUserDecision();
 
                 initMap(locationLatitude, locationLongitude, zipCode, radius);
@@ -306,7 +329,6 @@ function initMap(x, y, zip, rad) {
                     // Add marker
                     addMarker(markers[i]);
                 }
-
 
             });
 
