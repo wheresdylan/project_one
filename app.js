@@ -103,7 +103,7 @@ $(document).ready(function () {
 
 
             // cuisines near me
-            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
 
             $.ajax({
                 url: zomatoCuiNearMe,
@@ -120,34 +120,54 @@ $(document).ready(function () {
                 }
 
                 for (var t = 0; t < emptyRestarauntArray.length; t++) {
-                    var dropDownItem = $("<a>");
+                    var dropDownItem = $("<option>");
                     dropDownItem.addClass("dropdown-item");
+                    dropDownItem.attr("value", emptyRestarauntArray[t]);
+                    dropDownItem.text(emptyRestarauntArray[t]);
 
-                    dropDownItem.html(emptyRestarauntArray[t]);
-
-                    $(".dropdown-menu").append(dropDownItem);
+                    $(".dropdown").append(dropDownItem);
                 }
                 $('#userChoiceFormTwo').show();
 
                 console.log($(".dropdown-menu :selected").text());
             });
 
-            $("#submitUserChoice").on("click", function () {
-                // Code to flip before the decision is made!!
-                //debugger;
-                $('#coinDisplay').show();
-                var flipResult = Math.random();
-                $('#coin').removeClass();
-                setTimeout(function () {
-                    if (flipResult <= 0.5) {
-                        $('#coin').addClass('heads');
-                    }
-                    else {
-                        $('#coin').addClass('tails');
-                    }
+            // $("#submitUserChoice").on("click", function () {
+            //     // Code to flip before the decision is made!!
+            //     //debugger;
+            //     $('#coinDisplay').show();
+            //     var flipResult = Math.random();
+            //     $('#coin').removeClass();
+            //     setTimeout(function () {
+            //         if (flipResult <= 0.5) {
+            //             $('#coin').addClass('heads');
+            //         }
+            //         else {
+            //             $('#coin').addClass('tails');
+            //         }
                     
-                }, 100);
+            //     }, 100);
                
+            $("#submitUserChoice").on("click", function (event) {
+                event.preventDefault();
+
+                var user1Choice1 = $("#user1-Choice1").val();
+                var user1Choice2 = $("#user1-Choice2").val();
+                var user2Choice1 = $("#user2-Choice1").val();
+                var user2Choice2 = $("#user2-Choice2").val();
+
+                for (var i = 0; i < 5; i++) {
+                    foodArray.push(user1Choice1);
+                    foodArray.push(user2Choice1);
+                }
+
+                for (var i = 0; i < 2; i++) {
+                    foodArray.push(user1Choice2);
+                    foodArray.push(user2Choice2);
+                }
+
+                whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
+                console.log(whatToEat);
                 newBackgroundPlain();
                 showUserDecision();
 
@@ -155,7 +175,7 @@ $(document).ready(function () {
 
 
                 //url to the zomato api that gets restaurants near me 
-                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
 
                 $.ajax({
                     url: zomatoNearMe,
@@ -193,7 +213,7 @@ $(document).ready(function () {
                         // console.log("END OF RESTAURANT");
 
                         //review for a certain restaurant with id
-                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=df0e8b14ef12c3734454e5a4082ff386";
+                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
 
                         $.ajax({
                             url: zomatoReview,
@@ -292,7 +312,7 @@ function initMap(x, y, zip, rad) {
 
 
             //url to the zomato api that gets restaurants near me 
-            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
 
             $.ajax({
                 url: zomatoNearMe,
@@ -368,6 +388,10 @@ function initMap(x, y, zip, rad) {
         });
     }
 }
+
+//Decision making logic
+var foodArray = [];
+var whatToEat;
 
 
 
