@@ -1,12 +1,30 @@
+// jQuery(document).ready(function ($) {
+//     $('#submitUserChoice').on('click', function () {
+//         $('#coin').show();
+//         var flipResult = Math.random();
+//         $('#coin').removeClass();
+//         setTimeout(function () {
+//             if (flipResult <= 0.5) {
+//                 $('#coin').addClass('heads');
+//                 console.log('it is head');
+//             }
+//             else {
+//                 $('#coin').addClass('tails');
+//                 console.log('it is tails');
+//             }
+//         }, 100);
+//     });
+// });
+
 $(document).ready(function () {
-    $(".getStarted").on("click", function () {
-        // showUserForm();
-        newBackground();
-        console.log("GET STARTED")
-        $('#welcomePage').hide();
-        $('#userChoiceFormTwo').hide();
-        $('#userChoiceForm').show();
-    })
+    // $(".getStarted").on("click", function () {
+    //     // showUserForm();
+    //     newBackground();
+    //     console.log("GET STARTED")
+    //     $('#welcomePage').hide();
+    //     $('#userChoiceFormTwo').hide();
+    //     $('#userChoiceForm').show();
+    // })
 
     /// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
     var randBG = Math.floor(Math.random() * 12) + 1;
@@ -115,6 +133,21 @@ $(document).ready(function () {
             });
 
             $("#submitUserChoice").on("click", function () {
+                // Code to flip before the decision is made!!
+                //debugger;
+                $('#coinDisplay').show();
+                var flipResult = Math.random();
+                $('#coin').removeClass();
+                setTimeout(function () {
+                    if (flipResult <= 0.5) {
+                        $('#coin').addClass('heads');
+                    }
+                    else {
+                        $('#coin').addClass('tails');
+                    }
+                    
+                }, 100);
+               
                 newBackgroundPlain();
                 showUserDecision();
 
