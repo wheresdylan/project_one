@@ -8,8 +8,8 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <!-- Bootstrap -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-   crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <!-- Bootstrap for dropdown -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -33,13 +33,15 @@
                 <div id="welcome-left">
                     <h3>THE GREAT FOOD FEUD:</h3>
                     <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <br>
-                        <p>We get it, agreeing on a place to eat is hard!</p>
-                        <p>That's why "INSERT-SITE-NAME" exists...</p><br>
-                        <p>We're here to settle your dispute about what kind of food you want. All we need from you is your location, so we know what food options are nearby. Then, we'll help you decide!</p>
-                    </div>
-                    <!-- <div class="panel-body">
+                        <div class="panel-heading">
+                            <br>
+                            <p>We get it, agreeing on a place to eat is hard!</p>
+                            <p>That's why "INSERT-SITE-NAME" exists...</p>
+                            <br>
+                            <p>We're here to settle your dispute about what kind of food you want. All we need from you is your
+                                location, so we know what food options are nearby. Then, we'll help you decide!</p>
+                        </div>
+                        <!-- <div class="panel-body">
                         <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
                     </div> -->
                     </div>
@@ -48,16 +50,34 @@
             <div class="col-sm-6">
                 <div id="welcome-right">
                     <div class="panel panel-default">
-                    <div class="panel-heading">
+                        <div class="panel-heading">
 
-                        <p>However, helping you decide means nothing if you don't follow through, so please decide now to commit to our suggestion.</p>
-                        <p>That's right. Both of you.</p>
-                        <p>Good.</p>
-                        <p>If you agree and will live with our decision, then proceed...</p>
-                    </div>
-                    <div class="panel-body">
-                        <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
-                    </div>
+                            <p>However, helping you decide means nothing if you don't follow through, so please decide now to
+                                commit to our suggestion.</p>
+                            <p>That's right. Both of you.</p>
+                            <p>Good.</p>
+                            <p>If you agree and will live with our decision, then proceed...</p>
+                        </div>
+                        <div class="panel-body">
+                            <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
+                            <!-- THiS IS WHERE I PASTED IN FOR YOU -->
+                            <form id='top-form'>
+                                <!-- Location zip -->
+                                <div class="form-group">
+                                    <label for="zipInput">Location</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
+                                </div>
+
+                                <!-- Distance -->
+                                <div class="form-group">
+                                    <label for="distanceInput">Distance</label>
+                                    <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
+                                </div>
+
+                                <button type="submit" id="submitZipCode" class="btn btn-primary">Submit</button>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -65,12 +85,12 @@
             </div> -->
         </div>
     </div>
-    
+
 
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
             <div class="col-sm-6" id="user-choice-body">
-                <form id='left-form'>  
+                <form id='left-form'>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">User1</label>
                         <!-- Dropdown for user1: input #1 -->
@@ -80,7 +100,7 @@
                                 Choose your top preference!
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                               
+
                             </div>
                         </div>
                         <br>
@@ -91,13 +111,16 @@
                                 Select a second pick...
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice2">
+
                             </div>
                         </div>
                     </div>
+                    <!-- Submit button for user input -->
+                    <button type="submit" id="submitUserChoice" class="btn btn-dark">Submit</button>
                 </form>
             </div>
             <div class="col-sm-6" id="user-choice-body">
-                <form id='right-form'> 
+                <form id='right-form'>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">User2</label>
                         <!-- Dropdown for user2: input #1 -->
@@ -107,7 +130,7 @@
                                 Choice 1
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                       
+
                             </div>
                         </div>
                         <br>
@@ -118,15 +141,20 @@
                                 Choice 2
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                              
+
                             </div>
                         </div>
                     </div>
-                    <!-- Submit button for user input -->
-                    <button type="submit" id="submitUserChoice" class="btn btn-primary">Submit</button>
+
                 </form>
             </div>
-        </div>    
+        </div>
+    </div>
+    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
+
+        <!-- User 1 inputs -->
+        <!--User 2 inputs  -->
+
     </div>
 
     <!-- Search results to be displayed -->
