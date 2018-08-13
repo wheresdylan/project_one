@@ -1,199 +1,198 @@
-$("#getStarted").on("click", function () {
-    showUserForm();
-})
-
-$("#submit").on("click", function () {
-    showUserDecision();
-})
-
-function showUserForm() {
-    $('#welcomePage').hide();
-    $('#userChoiceForm').show();
-
-}
-
-
-function showUserDecision() {
-    event.preventDefault();
-    $('#welcomePage').hide();
-    $('#userChoiceForm').hide();
-    $('#userResult').show();
-}
-
-
 $(document).ready(function () {
 
-    //food variables
-    var BBQ = 193;
-    var italian = 55;
-    var chinese = 25;
-    var thai = 95;
-    var american = 1;
-    var seafood = 83;
-    var vietnamese = 99;
-    var vegetarian = 308;
-    var pizza = 82;
-    var mexican = 73;
-    var indian = 148;
-    var desserts = 100;
 
-    //location variables
-    var zipCode = 78741;
-
-    var locationLatitude;
-    var locationLongitude;
-
-    var radius = 1609.34;
-
-    //restauraunt variables
-
-    var averageCost;
-    var restaurantId;
-    var restaurantCuisines;
-    var restaurantName;
-    var restaurantMenuUrl;
-    var priceRange;
-    var address;
-    var latitude;
-    var longitude;
-    var featuredImage;
-    var aggregatedRating;
-    var ratingText;
+    $("#getStarted").on("click", function () {
+        // showUserForm();
+        $('#welcomePage').hide();
+        $('#userChoiceFormTwo').hide();
+        $('#userChoiceForm').show();
+    })
 
 
-    // //locating the city id
-    // var zomatoCityId = "https://developers.zomato.com/api/v2.1/cities?q=glasgow&apikey=b04b207197c3222be87ccd76e5531dbe";
+    function showUserDecision() {
+        event.preventDefault();
+        $('#welcomePage').hide();
+        $('#userChoiceFormTwo').hide();
+        $('#userChoiceForm').hide();
+        $('#userResult').show();
+    }
 
-    // $.ajax({
-    //     url: zomatoCityId,
-    //     method: "GET"
-    // }).then(function(response){
-    //     console.log(response);
-    // });
 
-    //google api
-    var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
+    //food object
 
-    //ajax call to get locations latitude and longitude depending on zipcode
-    $.ajax({
-        url: google,
-        method: "GET"
-    }).then(function (response) {
+    var radius;
 
-        // console.log(response);
 
-        locationLatitude = response.results[0].geometry.location.lat;
-        locationLongitude = response.results[0].geometry.location.lng;
+    $("#submitZipCode").on("click", function () {
+        // showUserDecision();
+        event.preventDefault();
+        $('#userChoiceForm').hide();
 
-        initMap(locationLatitude, locationLongitude);
 
-        //url to the zomato api that gets restaurants near me 
-        var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
+        zipCode = $("#zip").val().trim();
+        radius = $("#distance").val().trim();
+        radius = radius * 1609.344;
 
+        // //populating the array with userinput cuisines
+        // var emptyCuisineArray = [];
+        // for (var t = 0; t < 5; t++) {
+        //     //emptyCuisineArray.push(userChoiceOne)
+        //     //emptyCuisineArray.push(userChoiceTwo)
+        //     //emptyCuisineArray.push(secondChoiceOne)
+        //     //emptyCuisineArray.push(secondChoiceTwo)
+        // }
+
+
+
+        var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
+
+        //ajax call to get locations latitude and longitude depending on zipcode
         $.ajax({
-            url: zomatoNearMe,
+            url: google,
             method: "GET"
         }).then(function (response) {
-            // console.log(response.restaurants[0].restaurant);
 
-            for (var i = 0; i < 10; i++) {
-                averageCost = (response.restaurants[i].restaurant.average_cost_for_two);
-                restaurantId = (response.restaurants[i].restaurant.id);
-                restaurantCuisines = (response.restaurants[i].restaurant.cuisines);
-                restaurantName = (response.restaurants[i].restaurant.name);
-                restaurantMenuUrl = (response.restaurants[i].restaurant.menu_url);
-                priceRange = (response.restaurants[i].restaurant.price_range);
-                address = (response.restaurants[i].restaurant.location.address);
-                latitude = (response.restaurants[i].restaurant.location.latitude);
-                longitude = (response.restaurants[i].restaurant.location.longitude);
-                featuredImage = (response.restaurants[i].restaurant.featured_image);
-                aggregatedRating = (response.restaurants[i].restaurant.user_rating.aggregate_rating);
-                ratingText = (response.restaurants[i].restaurant.user_rating.rating_text);
+            // console.log(response);
 
-                // console.log(averageCost);
-                // console.log(restaurantId);
-                // console.log(restaurantCuisines);
-                // console.log(restaurantName);
-                // console.log(restaurantMenuUrl);
-                // console.log(priceRange);
-                // console.log(address);
-                // console.log(latitude);
-                // console.log(longitude);
-                // console.log(featuredImage);
-                // console.log(aggregatedRating);
-                // console.log(ratingText);
-                // console.log("END OF RESTAURANT");
+            var locationLatitude = response.results[0].geometry.location.lat;
+            var locationLongitude = response.results[0].geometry.location.lng;
 
-                //review for a certain restaurant with id
-                var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=b04b207197c3222be87ccd76e5531dbe";
+
+            //array ofdefault cuisines
+            var restaurantArray = ['BBQ', 'Italian', 'Chinese', 'Thai', 'American', 'Seafood', 'Vietnamese', 'Vegetarian', 'Pizza', 'Mexican', 'Indian', 'Desserts'];
+
+
+            // cuisines near me
+            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+
+            $.ajax({
+                url: zomatoCuiNearMe,
+                method: "GET"
+            }).then(function (response) {
+
+                var emptyRestarauntArray = [];
+
+                //populating an array with the cuisines in my area
+                for (var r = 0; r < response.cuisines.length; r++) {
+                    if (restaurantArray.includes(response.cuisines[r].cuisine.cuisine_name)) {
+                        emptyRestarauntArray.push(response.cuisines[r].cuisine.cuisine_name)
+                    }
+                }
+
+                for (var t = 0; t < emptyRestarauntArray.length; t++) {
+                    var dropDownItem = $("<a>");
+                    dropDownItem.addClass("dropdown-item");
+
+                    dropDownItem.html(emptyRestarauntArray[t]);
+
+                    $(".dropdown-menu").append(dropDownItem);
+                }
+                $('#userChoiceFormTwo').show();
+
+                console.log($(".dropdown-menu :selected").text());
+            });
+
+            $("#submitUserChoice").on("click", function () {
+                showUserDecision();
+
+                initMap(locationLatitude, locationLongitude, zipCode, radius);
+
+
+                //url to the zomato api that gets restaurants near me 
+                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
                 $.ajax({
-                    url: zomatoReview,
+                    url: zomatoNearMe,
                     method: "GET"
                 }).then(function (response) {
-                    // console.log(response);
+
+                    console.log(response);
+
+                    for (var i = 0; i < 10; i++) {
+                        var averageCost = (response.restaurants[i].restaurant.average_cost_for_two);
+                        var restaurantId = (response.restaurants[i].restaurant.id);
+                        var restaurantCuisines = (response.restaurants[i].restaurant.cuisines);
+                        var restaurantName = (response.restaurants[i].restaurant.name);
+                        var restaurantMenuUrl = (response.restaurants[i].restaurant.menu_url);
+                        var priceRange = (response.restaurants[i].restaurant.price_range);
+                        var address = (response.restaurants[i].restaurant.location.address);
+                        var latitude = (response.restaurants[i].restaurant.location.latitude);
+                        var longitude = (response.restaurants[i].restaurant.location.longitude);
+                        var featuredImage = (response.restaurants[i].restaurant.featured_image);
+                        var aggregatedRating = (response.restaurants[i].restaurant.user_rating.aggregate_rating);
+                        var ratingText = (response.restaurants[i].restaurant.user_rating.rating_text);
+
+                        // console.log(averageCost);
+                        // console.log(restaurantId);
+                        // console.log(restaurantCuisines);
+                        // console.log(restaurantName);
+                        // console.log(restaurantMenuUrl);
+                        // console.log(priceRange);
+                        // console.log(address);
+                        // console.log(latitude);
+                        // console.log(longitude);
+                        // console.log(featuredImage);
+                        // console.log(aggregatedRating);
+                        // console.log(ratingText);
+                        // console.log("END OF RESTAURANT");
+
+                        //review for a certain restaurant with id
+                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=df0e8b14ef12c3734454e5a4082ff386";
+
+                        $.ajax({
+                            url: zomatoReview,
+                            method: "GET"
+                        }).then(function (response) {
+                            // console.log(response);
+                        });
+                    }
                 });
-            }
+
+            });
+
         });
 
     });
-
-
-
-
-    //Cuisines near me with city id and longitude/latitude
-    var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?city_id=7018&lat=48.1970&lon=106.6367&apikey=b04b207197c3222be87ccd76e5531dbe";
-
-    $.ajax({
-        url: zomatoCuiNearMe,
-        method: "GET"
-    }).then(function (response) {
-        //  console.log(response);
-    });
-
 });
 
 
 //this is where the map is displayed and populated
 
-var zipCode = 78741;
-
-var locationLatitude;
-var locationLongitude;
-
-var radius = 1609.34;
-
-var BBQ = 193;
-var italian = 55;
-var chinese = 25;
-var thai = 95;
-var american = 1;
-var seafood = 83;
-var vietnamese = 99;
-var vegetarian = 308;
-var pizza = 82;
-var mexican = 73;
-var indian = 148;
-var desserts = 100;
+var foodObj =
+{
+    BBQ: 193,
+    italian: 55,
+    chinese: 25,
+    thai: 95,
+    american: 1,
+    seafood: 83,
+    vietnamese: 99,
+    vegetarian: 308,
+    pizza: 82,
+    mexican: 73,
+    indian: 148,
+    desserts: 100
+}
 
 
-function initMap(x,y) {
+function initMap(x, y, zip, rad) {
     // Map options
     var options = {
-        zoom: 10,
+        zoom: 12,
         center: { lat: x, lng: y }
     }
 
     // New map
     var map = new google.maps.Map(document.getElementById('map'), options);
 
-    markMap();
+    markMap(zip, rad);
 
     // Add Marker Function
     function addMarker(props) {
         var marker = new google.maps.Marker({
             position: props.coords,
             map: map,
+            url: props.url
             //icon:props.iconImage
         });
 
@@ -203,14 +202,26 @@ function initMap(x,y) {
                 content: props.content
             });
 
-            marker.addListener('click', function () {
+            marker.addListener('mouseover', function () {
                 infoWindow.open(map, marker);
             });
+
+            marker.addListener('mouseout', function () {
+                infoWindow.close();
+            });
+
+            marker.addListener('click', function () {
+                window.open(this.url, '_blank');
+
+            });
+
         }
     }
 
-    function markMap() {
-        var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
+    function markMap(zip, rad) {
+        console.log(zip)
+        console.log(rad)
+        var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
 
         //ajax call to get locations latitude and longitude depending on zipcode
         $.ajax({
@@ -218,73 +229,85 @@ function initMap(x,y) {
             method: "GET"
         }).then(function (response) {
 
-             console.log(response);
+            console.log(response);
 
-            locationLatitude = response.results[0].geometry.location.lat;
-            locationLongitude = response.results[0].geometry.location.lng;
-            
+            var locationLatitude = response.results[0].geometry.location.lat;
+            var locationLongitude = response.results[0].geometry.location.lng;
+
 
             //url to the zomato api that gets restaurants near me 
-            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
             $.ajax({
                 url: zomatoNearMe,
                 method: "GET"
             }).then(function (response) {
 
-                    //array of markers
-                    var markers = [
+                //array of markers
+                var markers = [
 
-                        {
-                            coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng:parseFloat(response.restaurants[0].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[0].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng:parseFloat(response.restaurants[1].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[1].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng:parseFloat(response.restaurants[2].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[2].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng:parseFloat(response.restaurants[3].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[3].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng:parseFloat(response.restaurants[4].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[4].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng:parseFloat(response.restaurants[5].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[5].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng:parseFloat(response.restaurants[6].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[6].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng:parseFloat(response.restaurants[7].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[7].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng:parseFloat(response.restaurants[8].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[8].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng:parseFloat(response.restaurants[9].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[9].restaurant.name + '</h1>'
-                        }
+                    {
+                        coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng: parseFloat(response.restaurants[0].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[0].restaurant.name + '</h5>',
+                        url: response.restaurants[0].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng: parseFloat(response.restaurants[1].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[1].restaurant.name + '</h5>',
+                        url: response.restaurants[1].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng: parseFloat(response.restaurants[2].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[2].restaurant.name + '</h5>',
+                        url: response.restaurants[2].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng: parseFloat(response.restaurants[3].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[3].restaurant.name + '</h5>',
+                        url: response.restaurants[3].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng: parseFloat(response.restaurants[4].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[4].restaurant.name + '</h5>',
+                        url: response.restaurants[4].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng: parseFloat(response.restaurants[5].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[5].restaurant.name + '</h5>',
+                        url: response.restaurants[5].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng: parseFloat(response.restaurants[6].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[6].restaurant.name + '</h5>',
+                        url: response.restaurants[6].restaurant.url
 
-                    ];
-
-                    //populating the markers
-
-                    for (var i = 0; i < markers.length; i++) {
-                        // Add marker
-                        addMarker(markers[i]);
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng: parseFloat(response.restaurants[7].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[7].restaurant.name + '</h5>',
+                        url: response.restaurants[7].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng: parseFloat(response.restaurants[8].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[8].restaurant.name + '</h5>',
+                        url: response.restaurants[8].restaurant.url
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng: parseFloat(response.restaurants[9].restaurant.location.longitude) },
+                        content: '<h5>' + response.restaurants[9].restaurant.name + '</h5>',
+                        url: response.restaurants[9].restaurant.url
                     }
-                
+
+                ];
+
+                //populating the markers
+
+                for (var i = 0; i < markers.length; i++) {
+                    // Add marker
+                    addMarker(markers[i]);
+                }
+
+
             });
 
         });

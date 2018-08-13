@@ -50,6 +50,7 @@
         </div>
     </div>
 
+    <!-- dylan changing class name and button name -->
     <div class="container rounded" id="userChoiceForm" style="border: 2px solid grey; display:none; background: white">
 
         <form>
@@ -65,6 +66,14 @@
                 <input type="text" class="form-control" id="distance" placeholder="miles">
             </div>
 
+            <button type="submit" id="submitZipCode"  class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- dylan adding class with new button and changing class name -->
+    <div class="container rounded" id="userChoiceFormTwo" style="border: 2px solid grey; display:none; background: white">
+       
+        <form>
             <!-- User 1 inputs -->
             <div class="form-group">
                 <label for="formGroupExampleInput2">User1</label>
@@ -75,9 +84,7 @@
                         Choice 1
                     </button>
                     <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                        <a class="dropdown-item" href="#">Italian</a>
-                        <a class="dropdown-item" href="#">Chinese</a>
-                        <a class="dropdown-item" href="#">Thai</a>
+                     
                     </div>
                 </div>
                 <br>
@@ -88,9 +95,7 @@
                         Choice 2
                     </button>
                     <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                        <a class="dropdown-item" href="#">Italian</a>
-                        <a class="dropdown-item" href="#">Chinese</a>
-                        <a class="dropdown-item" href="#">Thai</a>
+                      
                     </div>
                 </div>
             </div>
@@ -101,33 +106,29 @@
                 <label for="formGroupExampleInput2">User2</label>
                 <!-- Dropdown for user2: input #1 -->
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice1" data-toggle="dropdown" aria-haspopup="true"
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice1" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         Choice 1
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                        <a class="dropdown-item" href="#">Italian</a>
-                        <a class="dropdown-item" href="#">Chinese</a>
-                        <a class="dropdown-item" href="#">Thai</a>
+                    <div class="dropdown-menu" aria-labelledby="user2-Choice1">
+                    
                     </div>
                 </div>
                 <br>
                 <!-- Dropdown for user2: input #2 -->
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice2" data-toggle="dropdown" aria-haspopup="true"
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice2" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         Choice 2
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                        <a class="dropdown-item" href="#">Italian</a>
-                        <a class="dropdown-item" href="#">Chinese</a>
-                        <a class="dropdown-item" href="#">Thai</a>
+                    <div class="dropdown-menu" aria-labelledby="user2-Choice2">
+                 
                     </div>
                 </div>
             </div>
 
             <!-- Submit button for user input -->
-            <button type="submit" id="submit" onClick="show();" class="btn btn-primary">Submit</button>
+            <button type="submit" id="submitUserChoice" class="btn btn-primary">Submit</button>
 
         </form>
         <!-- Form for user input close -->
@@ -152,15 +153,15 @@
 
             </div>
             <div class="col-sm-6">
-                <div id="map"></div>
+                    <div id="map"></div>
+              
                 <!-- To Do -->
             </div>
         </div>
     </div>
 
-    </div>
-
     <script src="app.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o">
     </script>
 </body>
