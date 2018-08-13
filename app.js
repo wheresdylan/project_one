@@ -1,15 +1,36 @@
+var randBG = Math.floor(Math.random() * 12) + 1;
+var newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+
+
+function newRandBG() {
+    randBG = Math.floor(Math.random() * 12) + 1;
+}
+function newBackground() {
+    newRandBG();
+    newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+}
+function newBackgroundPlain() {
+    newRandBG();
+    newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%, transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+}
+
+
+
+
 $("#getStarted").on("click", function () {
     showUserForm();
+    newBackgroundPlain();
 })
 
 $("#submit").on("click", function () {
     showUserDecision();
+    newBackgroundPlain();
 })
 
 function showUserForm() {
     $('#welcomePage').hide();
     $('#userChoiceForm').show();
-
+    newBG;
 }
 
 
@@ -18,6 +39,7 @@ function showUserDecision() {
     $('#welcomePage').hide();
     $('#userChoiceForm').hide();
     $('#userResult').show();
+    newBG = newBG;
 }
 
 
@@ -177,7 +199,7 @@ var indian = 148;
 var desserts = 100;
 
 
-function initMap(x,y) {
+function initMap(x, y) {
     // Map options
     var options = {
         zoom: 10,
@@ -218,11 +240,11 @@ function initMap(x,y) {
             method: "GET"
         }).then(function (response) {
 
-             console.log(response);
+            console.log(response);
 
             locationLatitude = response.results[0].geometry.location.lat;
             locationLongitude = response.results[0].geometry.location.lng;
-            
+
 
             //url to the zomato api that gets restaurants near me 
             var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
@@ -232,59 +254,59 @@ function initMap(x,y) {
                 method: "GET"
             }).then(function (response) {
 
-                    //array of markers
-                    var markers = [
+                //array of markers
+                var markers = [
 
-                        {
-                            coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng:parseFloat(response.restaurants[0].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[0].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng:parseFloat(response.restaurants[1].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[1].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng:parseFloat(response.restaurants[2].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[2].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng:parseFloat(response.restaurants[3].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[3].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng:parseFloat(response.restaurants[4].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[4].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng:parseFloat(response.restaurants[5].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[5].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng:parseFloat(response.restaurants[6].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[6].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng:parseFloat(response.restaurants[7].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[7].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng:parseFloat(response.restaurants[8].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[8].restaurant.name + '</h1>'
-                        },
-                        {
-                            coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng:parseFloat(response.restaurants[9].restaurant.location.longitude) },
-                            content: '<h1>' + response.restaurants[9].restaurant.name + '</h1>'
-                        }
-
-                    ];
-
-                    //populating the markers
-
-                    for (var i = 0; i < markers.length; i++) {
-                        // Add marker
-                        addMarker(markers[i]);
+                    {
+                        coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng: parseFloat(response.restaurants[0].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[0].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng: parseFloat(response.restaurants[1].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[1].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng: parseFloat(response.restaurants[2].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[2].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng: parseFloat(response.restaurants[3].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[3].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng: parseFloat(response.restaurants[4].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[4].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng: parseFloat(response.restaurants[5].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[5].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng: parseFloat(response.restaurants[6].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[6].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng: parseFloat(response.restaurants[7].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[7].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng: parseFloat(response.restaurants[8].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[8].restaurant.name + '</h1>'
+                    },
+                    {
+                        coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng: parseFloat(response.restaurants[9].restaurant.location.longitude) },
+                        content: '<h1>' + response.restaurants[9].restaurant.name + '</h1>'
                     }
-                
+
+                ];
+
+                //populating the markers
+
+                for (var i = 0; i < markers.length; i++) {
+                    // Add marker
+                    addMarker(markers[i]);
+                }
+
             });
 
         });

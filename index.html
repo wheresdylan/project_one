@@ -17,6 +17,8 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Karma" rel="stylesheet">
     <!-- Our Specific CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -25,37 +27,51 @@
 
     <div class="container" id="welcomePage">
         <div class="row">
-            <div class="col-sm-1">
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-6">
+                <div id="welcome-left">
+                    <h3>THE GREAT FOOD FEUD:</h3>
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <br>
+                        <p>We get it, agreeing on a place to eat is hard!</p>
+                        <p>That's why "INSERT-SITE-NAME" exists...</p><br>
+                        <p>We're here to settle your dispute about what kind of food you want. All we need from you is your location, so we know what food options are nearby. Then, we'll help you decide!</p>
+                    </div>
+                    <!-- <div class="panel-body">
+                        <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
+                    </div> -->
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-10 welcomePage">
-                <h2>The Great Food Feud:</h2>
-                <div class="panel panel-default">
+            <div class="col-sm-6">
+                <div id="welcome-right">
+                    <div class="panel panel-default">
                     <div class="panel-heading">
 
-                        <p>Fighting with someone about what to eat?</p>
-                        <p>Use this simple web app to make a decision for you!</p>
-                        <p>However, helping you decide means nothing if you don't follow through, so please give us your word
-                            that you both agree to acquiesce to our suggestion:</p>
+                        <p>However, helping you decide means nothing if you don't follow through, so please decide now to commit to our suggestion.</p>
+                        <p>That's right. Both of you.</p>
+                        <p>Good.</p>
+                        <p>If you agree and will live with our decision, then proceed...</p>
                     </div>
                     <div class="panel-body">
                         <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
                     </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-1">
-            </div>
+            <!-- <div class="col-sm-1">
+            </div> -->
         </div>
     </div>
+    
 
-    <div class="container rounded" id="userChoiceForm" display: "hidden">
+    <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
-            <div class="col-sm-1">
-                <!-- Intentionally Blank -->
-            </div>
+            <div class="col-sm-12">
 
-            <div class="col-sm-10">
-
-                <form>
+                <form id='top-form'>
                     <!-- Location zip -->
                     <div class="form-group">
                         <label for="zipInput">Location</label>
@@ -68,7 +84,9 @@
                         <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
                     </div>
 
+                </form>
                     <!-- User 1 inputs -->
+                <form id='left-form'>  
                     <div class="form-group">
                         <label for="formGroupExampleInput2">User1</label>
                         <!-- Dropdown for user1: input #1 -->
@@ -97,9 +115,9 @@
                             </div>
                         </div>
                     </div>
-
+                </form>
                     <!--User 2 inputs  -->
-
+                <form id='right-form'> 
                     <div class="form-group">
                         <label for="formGroupExampleInput2">User2</label>
                         <!-- Dropdown for user2: input #1 -->
@@ -133,20 +151,17 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-1">
-            <!-- Intentionally Blank -->
-        </div>
     </div>
 
     <!-- Search results to be displayed -->
-    <div class="container rounded" display="visible">
+    <div class="container rounded" id="userResult" style="display: none;">
         <!-- row for the food type result -->
         <div class="row">
             <div class="col-sm-1">
                 <!-- Intentionally Blank -->
             </div>
 
-            <div class="col-sm-10" id="userResult">
+            <div class="col-sm-10">
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="formGroupExampleInput2">Food type selected</label>
