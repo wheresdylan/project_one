@@ -35,15 +35,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <br>
-                            <p>We get it, agreeing on a place to eat is hard!</p>
-                            <p>That's why "INSERT-SITE-NAME" exists...</p>
+                            <p>Choosing food can be hard!</p>
                             <br>
-                            <p>We're here to settle your dispute about what kind of food you want. All we need from you is your
-                                location, so we know what food options are nearby. Then, we'll help you decide!</p>
+                            <p>Tell us where you are, and we'll help you decide what kind of food to eat!</p>
                         </div>
-                        <!-- <div class="panel-body">
-                        <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
-                    </div> -->
                     </div>
                 </div>
             </div>
@@ -52,16 +47,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
 
-                            <p>However, helping you decide means nothing if you don't follow through, so please decide now to
-                                commit to our suggestion.</p>
-                            <p>That's right. Both of you.</p>
-                            <p>Good.</p>
-                            <p>If you agree and will live with our decision, then proceed...</p>
+                            <p>Tell us about where you are, and where you'll drive:</p>
+                        
                         </div>
-                        <div class="panel-body">
-                            <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
-                            <!-- THiS IS WHERE I PASTED IN FOR YOU -->
-                            <form id='top-form'>
+                        <div class="panel-body"><form id='top-form'>
                                 <!-- Location zip -->
                                 <div class="form-group">
                                     <label for="zipInput">Location</label>
@@ -74,18 +63,15 @@
                                     <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
                                 </div>
 
-                                <button type="submit" id="submitZipCode" class="btn btn-primary">Submit</button>
+                                <button type="submit" id="submitZipCode" class="btn btn-dark">Submit</button>
 
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-sm-1">
-            </div> -->
         </div>
     </div>
-
 
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
@@ -100,7 +86,6 @@
                                 Choose your top preference!
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-
                             </div>
                         </div>
                         <br>
@@ -111,7 +96,6 @@
                                 Select a second pick...
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-
                             </div>
                         </div>
                     </div>
@@ -161,11 +145,7 @@
     <div class="container rounded" id="userResult" style="display: none;">
         <!-- row for the food type result -->
         <div class="row">
-            <div class="col-sm-1">
-                <!-- Intentionally Blank -->
-            </div>
-
-            <div class="col-sm-10" id="user-result-body">
+            <div class="col-sm-6" id="user-result-body">
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="formGroupExampleInput2">Food type selected</label>
@@ -184,12 +164,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-1">
-                <!-- Intentionally Blank -->
-            </div>
-
-
         </div>
     </div>
 

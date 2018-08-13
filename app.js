@@ -1,33 +1,29 @@
 $(document).ready(function () {
-
-
-    $("#getStarted").on("click", function () {
+    $(".getStarted").on("click", function () {
         // showUserForm();
         newBackground();
+        console.log("GET STARTED")
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
         $('#userChoiceForm').show();
     })
 
+    /// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
+    var randBG = Math.floor(Math.random() * 12) + 1;
+    var newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
 
 
-
-/// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
-var randBG = Math.floor(Math.random() * 12) + 1;
-var newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
-
-
-function newRandBG() {
-    randBG = Math.floor(Math.random() * 12) + 1;
-}
-function newBackground() {
-    newRandBG();
-    newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
-}
-function newBackgroundPlain() {
-    newRandBG();
-    newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%, transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
-}
+    function newRandBG() {
+        randBG = Math.floor(Math.random() * 12) + 1;
+    }
+    function newBackground() {
+        newRandBG();
+        newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+    }
+    function newBackgroundPlain() {
+        newRandBG();
+        newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%, transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
+    }
 
     function showUserDecision() {
         event.preventDefault();
@@ -46,9 +42,13 @@ function newBackgroundPlain() {
 
     $("#submitZipCode").on("click", function () {
         // showUserDecision();
-        newBackgroundPlain();
         event.preventDefault();
-        $('#userChoiceForm').hide();
+        console.log("SUBMIT ZIP")
+        $('#welcomePage').hide();
+        $('#userChoiceFormTwo').hide();
+        $('#userChoiceForm').show();
+        newBackground();
+
 
 
         zipCode = $("#zip").val().trim();
