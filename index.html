@@ -48,9 +48,10 @@
                         <div class="panel-heading">
 
                             <p>Tell us about where you are, and where you'll drive:</p>
-                        
+
                         </div>
-                        <div class="panel-body"><form id='top-form'>
+                        <div class="panel-body">
+                            <form id='top-form'>
                                 <!-- Location zip -->
                                 <div class="form-group">
                                     <label for="zipInput">Location</label>
@@ -76,41 +77,45 @@
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
             <div class="col-sm-12" id="user-choice-body">
-                <form id='top-form'>
-                    <!-- Location zip -->
-                    <div class="form-group">
-                        <label for="zipInput">Location</label>
-                        <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6" id='left-form'>
+                            <!-- Dropdown for user1: input #1 -->
+                            <label for "user1-Choice1">Select your 1st choice</label>
+                            <br>
+                            <select class="dropdown" id="user1-Choice1"></select>
+                            <br>
+                            <!-- Dropdown for user1: input #2 -->
+                            <label for "user1-Choice2">Select your 2nd choice</label>
+                            <br>
+                            <select class="dropdown" id="user1-Choice2"></select>
+                            <br>
+                        </div>
+
+
+                        <div class="col-sm-6" id='right-form'>
+                            <!--User 2 inputs  -->
+                            <label for "user2-Choice1">Select your 1st choice</label>
+                            <br>
+                            <select class="dropdown" id="user2-Choice1"></select>
+                            <br>
+                            <label for "user2-Choice2">Select your 2nd choice</label>
+                            <br>
+                            <select class="dropdown" id="user2cd-Choice2"></select>
+                            <br>
+                            <input type="submit" id="submit">
+                        </div>
                     </div>
-                    <!-- Distance -->
-                    <div class="form-group">
-                        <label for="distanceInput">Distance</label>
-                        <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
-                    </div>
-                    <button type="submit" id="submitZipCode"  class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>    
-    </div>
-    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
-    
-                    <!-- User 1 inputs -->
-                <form id='left-form'>  
-                    <!-- Dropdown for user1: input #1 -->
-                    <label for "user1-Choice1">Select your 1st choice</label> <br>
-                    <select class="dropdown" id="user1-Choice1" ></select><br>
-                    <!-- Dropdown for user1: input #2 -->
-                    <label for "user1-Choice2">Select your 2nd choice</label> <br>
-                    <select class="dropdown" id="user1-Choice2" ></select> <br>
-                    <!--User 2 inputs  -->
-                    <label for "user2-Choice1">Select your 1st choice</label> <br>
-                    <select class="dropdown" id="user2-Choice1"></select><br>
-                    <label for "user2-Choice2">Select your 2nd choice</label> <br>
-                    <select class="dropdown" id="user2-Choice2"></select> <br>
-                    <input type="submit" id="submit">
                 </form>
             </div>
         </div>
+    </div>
+    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
+
+        <!-- User 1 inputs -->
+
+    </div>
+    </div>
     </div>
 
     <!-- Search results to be displayed -->
