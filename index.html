@@ -75,70 +75,42 @@
 
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
-            <div class="col-sm-6" id="user-choice-body">
-                <form id='left-form'>
+            <div class="col-sm-12" id="user-choice-body">
+                <form id='top-form'>
+                    <!-- Location zip -->
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">User1</label>
-                        <!-- Dropdown for user1: input #1 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice1" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Choose your top preference!
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                            </div>
-                        </div>
-                        <br>
-                        <!-- Dropdown for user1: input #2 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice2" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Select a second pick...
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                            </div>
-                        </div>
+                        <label for="zipInput">Location</label>
+                        <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
                     </div>
-                    <!-- Submit button for user input -->
-                    <button type="submit" id="submitUserChoice" class="btn btn-dark">Submit</button>
+                    <!-- Distance -->
+                    <div class="form-group">
+                        <label for="distanceInput">Distance</label>
+                        <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
+                    </div>
+                    <button type="submit" id="submitZipCode"  class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div class="col-sm-6" id="user-choice-body">
-                <form id='right-form'>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">User2</label>
-                        <!-- Dropdown for user2: input #1 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice1" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Choice 1
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-
-                            </div>
-                        </div>
-                        <br>
-                        <!-- Dropdown for user2: input #2 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice2" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Choice 2
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-
-                            </div>
-                        </div>
-                    </div>
-
+        </div>    
+    </div>
+    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
+    
+                    <!-- User 1 inputs -->
+                <form id='left-form'>  
+                    <!-- Dropdown for user1: input #1 -->
+                    <label for "user1-Choice1">Select your 1st choice</label> <br>
+                    <select class="dropdown" id="user1-Choice1" ></select><br>
+                    <!-- Dropdown for user1: input #2 -->
+                    <label for "user1-Choice2">Select your 2nd choice</label> <br>
+                    <select class="dropdown" id="user1-Choice2" ></select> <br>
+                    <!--User 2 inputs  -->
+                    <label for "user2-Choice1">Select your 1st choice</label> <br>
+                    <select class="dropdown" id="user2-Choice1"></select><br>
+                    <label for "user2-Choice2">Select your 2nd choice</label> <br>
+                    <select class="dropdown" id="user2-Choice2"></select> <br>
+                    <input type="submit" id="submit">
                 </form>
             </div>
         </div>
-    </div>
-    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
-
-        <!-- User 1 inputs -->
-        <!--User 2 inputs  -->
-
     </div>
 
     <!-- Search results to be displayed -->
