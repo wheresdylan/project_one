@@ -76,10 +76,29 @@ body, html {
     padding-top: 4vh;
     padding-right: 3.5em;
     min-height: 390px;
-    
+
 }
 #getStarted{
     font-weight: 600;
+}
+/* WELCOME PAGE - GRAY BOX SLIDE OUT ANIMATION */
+#welcome-left {
+    position: relative;
+    display: inline-block;
+    left: 110%; 
+}
+#slide-left{
+    width: 100%;
+    overflow: hidden; 
+}
+#welcome-right {
+    position: relative;
+    display: inline-block; 
+    right: 110%; 
+}
+#slide-right{
+    width: 100%;
+    overflow: hidden; 
 }
 
 /* PAGE TWO SPECIFIC STUFF */
