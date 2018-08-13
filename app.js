@@ -85,7 +85,7 @@ function newBackgroundPlain() {
 
 
             // cuisines near me
-            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
             $.ajax({
                 url: zomatoCuiNearMe,
@@ -102,16 +102,16 @@ function newBackgroundPlain() {
                 }
 
                 for (var t = 0; t < emptyRestarauntArray.length; t++) {
-                    var dropDownItem = $("<a>");
-                    dropDownItem.addClass("dropdown-item");
+                    var dropDownItem = $("<option value=" + emptyRestarauntArray[t] + ">");
 
                     dropDownItem.html(emptyRestarauntArray[t]);
 
                     $(".dropdown-menu").append(dropDownItem);
+                    console.log(dropDownItem)
                 }
                 $('#userChoiceFormTwo').show();
 
-                console.log($(".dropdown-menu :selected").text());
+                // console.log($(".dropdown-menu :selected").text());
             });
 
             $("#submitUserChoice").on("click", function () {
@@ -122,7 +122,7 @@ function newBackgroundPlain() {
 
 
                 //url to the zomato api that gets restaurants near me 
-                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
                 $.ajax({
                     url: zomatoNearMe,
@@ -160,7 +160,17 @@ function newBackgroundPlain() {
                         // console.log("END OF RESTAURANT");
 
                         //review for a certain restaurant with id
-                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=df0e8b14ef12c3734454e5a4082ff386";
+                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=b04b207197c3222be87ccd76e5531dbe";
+
+                        console.log(featuredImage);
+
+
+                        var img = $('<img />').attr({
+                            'class': "newImage",
+                            'src': featuredImage,
+                        }).appendTo('#restarauntImages');
+
+                        
 
                         $.ajax({
                             url: zomatoReview,
@@ -259,7 +269,7 @@ function initMap(x, y, zip, rad) {
 
 
             //url to the zomato api that gets restaurants near me 
-            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
             $.ajax({
                 url: zomatoNearMe,
