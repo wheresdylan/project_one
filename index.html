@@ -83,7 +83,14 @@
                         <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
                     </div>
 
+                    <button type="submit" id="submitZipCode"  class="btn btn-primary">Submit</button>
+
                 </form>
+            </div>
+        </div>    
+    </div>
+    <div class="container rounded" id="userChoiceFormTwo" style="display: none;">
+    
                     <!-- User 1 inputs -->
                 <form id='left-form'>  
                     <div class="form-group">
@@ -95,9 +102,7 @@
                                 Choose your top preference!
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                                <a class="dropdown-item" href="#">Italian</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                                <a class="dropdown-item" href="#">Thai</a>
+                               
                             </div>
                         </div>
                         <br>
@@ -108,9 +113,7 @@
                                 Select a second pick...
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                                <a class="dropdown-item" href="#">Italian</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                                <a class="dropdown-item" href="#">Thai</a>
+                           
                             </div>
                         </div>
                     </div>
@@ -121,35 +124,29 @@
                         <label for="formGroupExampleInput2">User2</label>
                         <!-- Dropdown for user2: input #1 -->
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice1" data-toggle="dropdown" aria-haspopup="true"
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice1" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 Choice 1
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                                <a class="dropdown-item" href="#">Italian</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                                <a class="dropdown-item" href="#">Thai</a>
+                       
                             </div>
                         </div>
                         <br>
                         <!-- Dropdown for user2: input #2 -->
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice2" data-toggle="dropdown" aria-haspopup="true"
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice2" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 Choice 2
                             </button>
                             <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                                <a class="dropdown-item" href="#">Italian</a>
-                                <a class="dropdown-item" href="#">Chinese</a>
-                                <a class="dropdown-item" href="#">Thai</a>
+                              
                             </div>
                         </div>
                     </div>
                     <!-- Submit button for user input -->
-                    <button type="submit" id="submit" onClick="show();" class="btn btn-dark">Submit</button>
+                    <button type="submit" id="submitUserChoice" class="btn btn-primary">Submit</button>
                 </form>
-            </div>
-        </div>
     </div>
 
     <!-- Search results to be displayed -->
@@ -189,6 +186,7 @@
     </div>
 
     <script src="app.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o">
     </script>
 </body>
