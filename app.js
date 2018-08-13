@@ -3,7 +3,7 @@ $(document).ready(function () {
 
     $("#getStarted").on("click", function () {
         // showUserForm();
-        newBackgroundPlain();
+        newBackground();
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
         $('#userChoiceForm').show();
