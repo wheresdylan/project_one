@@ -134,7 +134,7 @@ $(document).ready(function () {
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
                 console.log(whatToEat);
-                newBackgroundPlain();
+                newBackground();
                 showUserDecision();
 
                 initMap(locationLatitude, locationLongitude, zipCode, radius);
