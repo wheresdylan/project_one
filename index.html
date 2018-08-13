@@ -8,8 +8,8 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <!-- Bootstrap -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-   crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <!-- Bootstrap for dropdown -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -33,39 +33,45 @@
                 <div id="welcome-left">
                     <h3>THE GREAT FOOD FEUD:</h3>
                     <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <br>
-                        <p>We get it, agreeing on a place to eat is hard!</p>
-                        <p>That's why "INSERT-SITE-NAME" exists...</p><br>
-                        <p>We're here to settle your dispute about what kind of food you want. All we need from you is your location, so we know what food options are nearby. Then, we'll help you decide!</p>
-                    </div>
-                    <!-- <div class="panel-body">
-                        <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
-                    </div> -->
+                        <div class="panel-heading">
+                            <br>
+                            <p>Choosing food can be hard!</p>
+                            <br>
+                            <p>Tell us where you are, and we'll help you decide what kind of food to eat!</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div id="welcome-right">
                     <div class="panel panel-default">
-                    <div class="panel-heading">
+                        <div class="panel-heading">
 
-                        <p>However, helping you decide means nothing if you don't follow through, so please decide now to commit to our suggestion.</p>
-                        <p>That's right. Both of you.</p>
-                        <p>Good.</p>
-                        <p>If you agree and will live with our decision, then proceed...</p>
-                    </div>
-                    <div class="panel-body">
-                        <button id="getStarted" class="btn btnStyle">We Agree. Help us choose!</button>
-                    </div>
+                            <p>Tell us about where you are, and where you'll drive:</p>
+                        
+                        </div>
+                        <div class="panel-body"><form id='top-form'>
+                                <!-- Location zip -->
+                                <div class="form-group">
+                                    <label for="zipInput">Location</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
+                                </div>
+
+                                <!-- Distance -->
+                                <div class="form-group">
+                                    <label for="distanceInput">Distance</label>
+                                    <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
+                                </div>
+
+                                <button type="submit" id="submitZipCode" class="btn btn-dark">Submit</button>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-sm-1">
-            </div> -->
         </div>
     </div>
-    
 
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
@@ -76,15 +82,12 @@
                         <label for="zipInput">Location</label>
                         <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
                     </div>
-
                     <!-- Distance -->
                     <div class="form-group">
                         <label for="distanceInput">Distance</label>
                         <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
                     </div>
-
                     <button type="submit" id="submitZipCode"  class="btn btn-primary">Submit</button>
-
                 </form>
             </div>
         </div>    
@@ -93,71 +96,28 @@
     
                     <!-- User 1 inputs -->
                 <form id='left-form'>  
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">User1</label>
-                        <!-- Dropdown for user1: input #1 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice1" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Choose your top preference!
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                               
-                            </div>
-                        </div>
-                        <br>
-                        <!-- Dropdown for user1: input #2 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user1-Choice2" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Select a second pick...
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                           
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    <!-- Dropdown for user1: input #1 -->
+                    <label for "user1-Choice1">Select your 1st choice</label> <br>
+                    <select class="dropdown" id="user1-Choice1" ></select><br>
+                    <!-- Dropdown for user1: input #2 -->
+                    <label for "user1-Choice2">Select your 2nd choice</label> <br>
+                    <select class="dropdown" id="user1-Choice2" ></select> <br>
                     <!--User 2 inputs  -->
-                <form id='right-form'> 
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">User2</label>
-                        <!-- Dropdown for user2: input #1 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice1" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Choice 1
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice1">
-                       
-                            </div>
-                        </div>
-                        <br>
-                        <!-- Dropdown for user2: input #2 -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="user2-Choice2" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Choice 2
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="user1-Choice2">
-                              
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Submit button for user input -->
-                    <button type="submit" id="submitUserChoice" class="btn btn-primary">Submit</button>
+                    <label for "user2-Choice1">Select your 1st choice</label> <br>
+                    <select class="dropdown" id="user2-Choice1"></select><br>
+                    <label for "user2-Choice2">Select your 2nd choice</label> <br>
+                    <select class="dropdown" id="user2-Choice2"></select> <br>
+                    <input type="submit" id="submit">
                 </form>
+            </div>
+        </div>
     </div>
 
     <!-- Search results to be displayed -->
     <div class="container rounded" id="userResult" style="display: none;">
         <!-- row for the food type result -->
         <div class="row">
-            <div class="col-sm-1">
-                <!-- Intentionally Blank -->
-            </div>
-
-            <div class="col-sm-10" id="user-result-body">
+            <div class="col-sm-6" id="user-result-body">
                 <div class="row">
                     <div class="col-sm-12">
                         <label for="formGroupExampleInput2">Food type selected</label>
@@ -179,12 +139,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-1">
-                <!-- Intentionally Blank -->
-            </div>
-
-
         </div>
     </div>
 
