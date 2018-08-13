@@ -114,7 +114,26 @@ $(document).ready(function () {
                 // console.log($(".dropdown-menu :selected").text());
             });
 
-            $("#submitUserChoice").on("click", function () {
+            $("#submitUserChoice").on("click", function (event) {
+                event.preventDefault();
+
+                var user1Choice1 = $("#user1-Choice1").val();
+                var user1Choice2 = $("#user1-Choice2").val();
+                var user2Choice1 = $("#user2-Choice1").val();
+                var user2Choice2 = $("#user2-Choice2").val();
+
+                for (var i = 0; i < 5; i++) {
+                    foodArray.push(user1Choice1);
+                    foodArray.push(user2Choice1);
+                }
+
+                for (var i = 0; i < 2; i++) {
+                    foodArray.push(user1Choice2);
+                    foodArray.push(user2Choice2);
+                }
+
+                whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
+                console.log(whatToEat);
                 newBackgroundPlain();
                 showUserDecision();
 
@@ -345,33 +364,8 @@ function initMap(x, y, zip, rad) {
 }
 
 //Decision making logic
-var foodArray =[];
+var foodArray = [];
 var whatToEat;
-
-$("#submit").on("click", getFood)
-
-
-function getFood(event) {
-    event.preventDefault();
-
-    var user1Choice1 = $("#user1-Choice1").val();
-    var user1Choice2 = $("#user1-Choice2").val();
-    var user2Choice1 = $("#user2-Choice1").val();
-    var user2Choice2 = $("#user2-Choice2").val();
-
-    for (var i=0; i < 5; i++) {
-        foodArray.push(user1Choice1);
-        foodArray.push(user2Choice1);
-    }
-
-    for (var i=0; i < 2; i++) {
-        foodArray.push(user1Choice2);
-        foodArray.push(user2Choice2);
-    }
-
-    whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
-    console.log(whatToEat);
-}
 
 
 
