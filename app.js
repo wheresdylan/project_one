@@ -313,6 +313,15 @@ $(document).ready(function () {
     });
 });
 
+$("#submitZipCode").on("click", function () {
+    $("#left-form").animate({ left: "0" }, {
+        duration: 2000
+    });
+    $("#right-form").animate({ right: "0" }, {
+        duration: 2000
+    });
+});
+
 //this is where the map is displayed and populated
 
 
