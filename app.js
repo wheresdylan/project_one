@@ -1,8 +1,6 @@
 
 $(document).ready(function () {
-
     $('#coinFlip').hide();
-
     /// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
     var randBG = Math.floor(Math.random() * 12) + 1;
     var newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
@@ -22,7 +20,7 @@ $(document).ready(function () {
 
     function showUserDecision() {
         $('#welcomePage').hide();
-        $('#userChoiceFormTwo').hide();
+        // Deleted userChoiceFormTwo
         $('#userChoiceForm').hide();
         $('#coinFlip').hide();
         $('#userResult').show();
@@ -40,10 +38,12 @@ $(document).ready(function () {
 
         event.preventDefault();
         console.log("SUBMIT ZIP")
+
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
         $('#coinFlip').hide();
         $('#userChoiceForm').show();
+
         newBackground();
 
 
@@ -102,6 +102,7 @@ $(document).ready(function () {
             $("#submitUserChoice").on("click", function (event) {
 
                 event.preventDefault();
+
                 var user1Choice1 = $("#user1-Choice1").val();
                 var user1Choice2 = $("#user1-Choice2").val();
                 var user2Choice1 = $("#user2-Choice1").val();
@@ -126,6 +127,7 @@ $(document).ready(function () {
 
                 // To flip the coin
                 $('#coinFlip').show();
+                
                 var flipResult = Math.random();
                 $('#coin').removeClass();
                 setTimeout(function () {
