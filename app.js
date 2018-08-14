@@ -162,6 +162,8 @@ $(document).ready(function () {
                 }
 
                 newBackgroundPlain();
+                console.log(whatToEat);
+                newBackground();
                 showUserDecision();
 
                 initMap(locationLatitude, locationLongitude, zipCode, radius, whatToEat);
@@ -255,6 +257,15 @@ $(document).ready(function () {
     });
 });
 
+//WELCOME PAGE - GRAY BOX SLIDE OUT ANIMATION//
+$(document).ready(function() {
+    $("#welcome-left").animate({left: "0"}, {
+        duration: 2000    
+    });
+    $("#welcome-right").animate({right: "0"}, {
+        duration: 2000       
+    });
+});
 
 //this is where the map is displayed and populated
 
