@@ -129,7 +129,7 @@ $(document).ready(function () {
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
 
-                $("#decisionMade").html(whatToEat);
+                $("#decisionMade").html("Food Choice is: " + whatToEat);
 
                 console.log(whatToEat);
 
@@ -255,20 +255,6 @@ $(document).ready(function () {
                             restarauntHeading.html(restaurantName);
 
                             $('#' + i + 'imageInput').append(restarauntHeading);
-
-                            // //adding the rating
-                            // var newRating = $('<h6>');
-                            // newRating.addClass("newRating");
-                            // newRating.html("Rating " + aggregatedRating);
-
-                            // $('#'+ i +'imageInput').append(newRating);
-
-                            // //adds the average cost for two
-                            // var cost = $('<h6>');
-                            // cost.addClass("newCost");
-                            // cost.html("Average Cost for Two: " + averageCost + "$");
-
-                            // $('#'+ i +'imageInput').append(cost);
 
 
 
@@ -404,53 +390,53 @@ function initMap(x, y, zip, rad, whatToEat) {
 
                     {
                         coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng: parseFloat(response.restaurants[0].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[0].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[0].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[0].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[0].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[0].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[0].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng: parseFloat(response.restaurants[1].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[1].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[1].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[1].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[1].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[1].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[1].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng: parseFloat(response.restaurants[2].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[2].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[2].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[2].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[2].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[2].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[2].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng: parseFloat(response.restaurants[3].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[3].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[3].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[3].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[3].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[3].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[3].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng: parseFloat(response.restaurants[4].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[4].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[4].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[4].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[4].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[4].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[4].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng: parseFloat(response.restaurants[5].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[5].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[5].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[5].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[5].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[5].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[5].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng: parseFloat(response.restaurants[6].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[6].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[6].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[6].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[6].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[6].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[6].restaurant.url
 
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng: parseFloat(response.restaurants[7].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[7].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[7].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[7].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[7].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[7].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[7].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng: parseFloat(response.restaurants[8].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[8].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[8].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[8].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[8].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[8].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[8].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng: parseFloat(response.restaurants[9].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[9].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[9].restaurant.user_rating.aggregate_rating + '</h5>',
+                        content: '<h5>' + response.restaurants[9].restaurant.name + '</h5><h5>Rating: ' + response.restaurants[9].restaurant.user_rating.aggregate_rating + '</h5><h5>Avg Cost for Two: ' + response.restaurants[9].restaurant.average_cost_for_two + '$</h5>',
                         url: response.restaurants[9].restaurant.url
                     }
 
