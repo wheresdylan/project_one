@@ -27,40 +27,49 @@
 
     <div class="container" id="welcomePage">
         <div class="row">
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-6" id="slide-left">
                 <div id="welcome-left">
                     <h3>THE GREAT FOOD FEUD:</h3>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <br>
-                            <p>Choosing food can be hard!</p>
+                            <p>Choosing where to eat is tough.</p>
                             <br>
-                            <p>Tell us where you are, and we'll help you decide what kind of food to eat!</p>
+                            <p>If two of you can't agree on a type of food,<br> we can help...</p>
+                            <br>
+                            <p>Let us make the choice for you!</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" id="slide-left">
                 <div id="welcome-right">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <p>Tell us about where you are, and where you'll drive:</p>
+
+                            <p>Tell us about where you are, and how far you're willing to travel:</p>
+
                         </div>
                         <div class="panel-body">
                             <form id='top-form'>
                                 <!-- Location zip -->
                                 <div class="form-group">
-                                    <label for="zipInput">Location</label>
+                                    <label for="zipInput">Location -</label>
                                     <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
                                 </div>
 
                                 <!-- Distance -->
                                 <div class="form-group">
-                                    <label for="distanceInput">Distance</label>
+                                    <label for="distanceInput">Distance -</label>
                                     <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
                                 </div>
 
-                                <button type="submit" id="submitZipCode" class="btn btn-dark">Submit</button>
+                                <button type="submit" id="submitZipCode" class="btn btn-dark">
+                                    <span class="alltxt">Submit</span>
+                                </button>
+
                             </form>
                         </div>
                     </div>
@@ -75,29 +84,42 @@
                 <form>
                     <div class="row">
                         <div class="col-sm-6" id='left-form'>
+                            <h3>Second user:
+                                <br>Tell us what you'd prefer:</h3><br>
                             <!-- Dropdown for user1: input #1 -->
-                            <label for "user1-Choice1">Select your 1st choice</label>
-                            <br>
+                            <label class="dd-label" for "user1-Choice1">
+                                <p>Select your 1st choice:</p>
+                            </label>
                             <select class="dropdown" id="user1-Choice1"></select>
                             <br>
                             <!-- Dropdown for user1: input #2 -->
-                            <label for "user1-Choice2">Select your 2nd choice</label>
-                            <br>
+                            <label class="dd-label" for "user1-Choice2">
+                                <p>Select your 2nd choice:</p>
+                            </label>
                             <select class="dropdown" id="user1-Choice2"></select>
                             <br>
+                            <!-- <input type="submit" id="submitUserChoice"> -->
+                            <button type="submit" id="submitUserChoice" class="btn btn-dark">
+                                <span class="alltxt">Pick for us!</span>
+                            </button>
                         </div>
 
                         <div class="col-sm-6" id='right-form'>
                             <!--User 2 inputs  -->
-                            <label for "user2-Choice1">Select your 1st choice</label>
-                            <br>
+                            <h3>First user:
+                                <br>What would you like to eat?</h3>
+                            <p>(Your first choice will weigh more heavily)</p><br>
+                            <label class="dd-label" for "user2-Choice1">
+                                <p>Select your 1st choice:</p>
+                            </label>
                             <select class="dropdown" id="user2-Choice1"></select>
                             <br>
-                            <label for "user2-Choice2">Select your 2nd choice</label>
-                            <br>
+                            <label class="dd-label" for "user2-Choice2">
+                                <p>Select your 2nd choice:</p>
+                            </label>
                             <select class="dropdown" id="user2cd-Choice2"></select>
                             <br>
-                            <input type="submit" id="submitUserChoice">
+
                         </div>
                     </div>
                 </form>
@@ -117,18 +139,22 @@
     <div class="container rounded" id="userResult" style="display:none;">
         <!-- row for the food type result -->
         <div class="row">
-
-        </div>
-        <div class="row">
-            <div id="user-result-body">
-                <label for="formGroupExampleInput2">Location results</label>
-                <div id="location-Result"> Pull the restaurant result
+            <div class="col-sm-6">
+                <div id="user-result-body">
+                    <label for="formGroupExampleInput2">
+                        <p>Location results</p>
+                    </label>
+                    <div id="location-Result">
+                        <p>Pull the restaurant result</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div id="map">
+            <div class="col-sm-6">
+                <div id="map-holder">
+                    <p>Now...go eat:</p>
+                    <div id="map">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
