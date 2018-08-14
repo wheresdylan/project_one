@@ -125,6 +125,8 @@ $(document).ready(function () {
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
 
+                $("#decisionMade").html(whatToEat);
+
                 if (whatToEat === "BBQ") {
                     whatToEat = 193
                 } else if (whatToEat === "Italian") {
