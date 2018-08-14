@@ -36,7 +36,7 @@
                             <br>
                             <p>Choosing where to eat is tough.</p>
                             <br>
-                            <p>If two of you can't agree on a type of food,<br> we can help...</p>
+                            <p>If two of you can't agree on a type of food, we can help...</p>
                             <br>
                             <p>Let us make the choice for you!</p>
                         </div>
@@ -49,19 +49,19 @@
                 <div id="welcome-right">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <p>Tell us about where you are, and where you'll drive:</p>
+                            <p>Tell us where you are, and how far you'll travel:</p>
                         </div>
                         <div class="panel-body">
                             <form id='top-form'>
                                 <!-- Location zip -->
                                 <div class="form-group">
                                     <label for="zipInput">Location -</label>
-                                    <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
+                                    <input type="text" class="form-control" id="zip" placeholder="Enter your ZIP code">
                                 </div>
                                 <!-- Distance -->
                                 <div class="form-group">
                                     <label for="distanceInput">Distance -</label>
-                                    <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
+                                    <input type="text" class="form-control" id="distance" placeholder="How far will you travel? (miles)">
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="submit" id="submitZipCode" class="btn btn-dark">
@@ -131,7 +131,9 @@
             <div class="col-sm-6">
                 <div id="user-result-body">
                     <label for="formGroupExampleInput2">
-                        <p>Location results</p>
+                        <p>Your food choice is:</p>
+                        <!-- The span below will display the user's final assigned pick: -->
+                        <p><span id="final-food-choice">      </span></p> 
                     </label>
                     <div id="location-Result">
                         <p>Pull the restaurant result</p>
