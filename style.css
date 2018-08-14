@@ -1,4 +1,6 @@
-/* STYLE */
+
+/* MAIN BODY STYLE SHEET */
+
 
 *{
     margin:0px;
@@ -39,6 +41,7 @@ body, html {
     height: 100%;
 }
 
+/* LANDING PAGE */
 #welcome-left{
     background: rgb(35, 37, 40);
     background: linear-gradient(
@@ -145,7 +148,9 @@ body, html {
     min-height: 390px;
     
 }
- /* PAGE THREE STUFF */
+
+/* PAGE THREE */
+
 #map{
     height:37vh;
     width:95%;
