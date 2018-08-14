@@ -221,6 +221,23 @@ h3{
     font-size: 2.3em;
 }
 
+.newImage{
+    margin:10px;
+    width:200px;
+
+}
+
+h6{
+    color:white;
+    border:2px solid black;
+    background-color: black;
+    width:200px;
+    text-align: center;
+}
+
+#imageInput{
+    width:500px;
+}
 
 
 
