@@ -40,7 +40,7 @@ $(document).ready(function () {
     var radius;
 
 
-    $("#submitZipCode").on("click", function () {
+    $("#submitZipCode").on("click", function (event) {
         // showUserDecision();
         event.preventDefault();
         console.log("SUBMIT ZIP")
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
 
             // cuisines near me
-            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
             $.ajax({
                 url: zomatoCuiNearMe,
@@ -115,6 +115,7 @@ $(document).ready(function () {
             });
 
             $("#submitUserChoice").on("click", function (event) {
+
                 event.preventDefault();
 
                 var user1Choice1 = $("#user1-Choice1").val();
@@ -133,15 +134,41 @@ $(document).ready(function () {
                 }
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
-                console.log(whatToEat);
+
+                if (whatToEat === "BBQ") {
+                    whatToEat = 193
+                } else if (whatToEat === "Italian") {
+                    whatToEat = 55
+                } else if (whatToEat === "Chinese") {
+                    whatToEat = 25
+                } else if (whatToEat === "Thai") {
+                    whatToEat = 95
+                } else if (whatToEat === "American") {
+                    whatToEat = 1
+                } else if (whatToEat === "Seafood") {
+                    whatToEat = 83
+                } else if (whatToEat === "Vietnamese") {
+                    whatToEat = 99
+                } else if (whatToEat === "Vegetarian") {
+                    whatToEat = 308
+                } else if (whatToEat === "Pizza") {
+                    whatToEat = 82
+                } else if (whatToEat === "Mexican") {
+                    whatToEat = 73
+                } else if (whatToEat === "Indian") {
+                    whatToEat = 148
+                } else if (whatToEat === "Desserts") {
+                    whatToEat = 100
+                }
+
                 newBackgroundPlain();
                 showUserDecision();
 
-                initMap(locationLatitude, locationLongitude, zipCode, radius);
+                initMap(locationLatitude, locationLongitude, zipCode, radius, whatToEat);
 
 
                 //url to the zomato api that gets restaurants near me 
-                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + whatToEat + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
                 $.ajax({
                     url: zomatoNearMe,
@@ -178,17 +205,40 @@ $(document).ready(function () {
                         // console.log(ratingText);
                         // console.log("END OF RESTAURANT");
 
-                        //review for a certain restaurant with id
-                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
 
-                        console.log(featuredImage);
+                        var newDiv = $("<div>");
+                        newDiv.attr("id", i + "imageInput");
+
+                        $('#restarauntImages').append(newDiv);
 
 
                         var img = $('<img />').attr({
                             'class': "newImage",
                             'src': featuredImage,
-                        }).appendTo('#restarauntImages');
+                        }).appendTo('#'+ i +'imageInput');
 
+
+                        var restarauntHeading = $('<h6>');
+                        restarauntHeading.addClass("restarauntName");
+                        restarauntHeading.html(restaurantName);
+
+                        $('#'+ i +'imageInput').append(restarauntHeading);
+
+                        var newRating = $('<h6>');
+                        newRating.addClass("newRating");
+                        newRating.html("Rating " + aggregatedRating);
+
+                        $('#'+ i +'imageInput').append(newRating);
+
+                        var cost = $('<h6>');
+                        cost.addClass("newCost");
+                        cost.html("Average Cost for Two: " + averageCost + "$");
+
+                        $('#'+ i +'imageInput').append(cost);
+
+
+                        //review for a certain restaurant with id
+                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=b04b207197c3222be87ccd76e5531dbe";
                         $.ajax({
                             url: zomatoReview,
                             method: "GET"
@@ -208,24 +258,14 @@ $(document).ready(function () {
 
 //this is where the map is displayed and populated
 
-var foodObj =
-{
-    BBQ: 193,
-    italian: 55,
-    chinese: 25,
-    thai: 95,
-    american: 1,
-    seafood: 83,
-    vietnamese: 99,
-    vegetarian: 308,
-    pizza: 82,
-    mexican: 73,
-    indian: 148,
-    desserts: 100
-}
 
 
-function initMap(x, y, zip, rad) {
+// Decision making logic
+var foodArray = [];
+var whatToEat;
+
+
+function initMap(x, y, zip, rad, whatToEat) {
     // Map options
     var options = {
         zoom: 12,
@@ -235,7 +275,7 @@ function initMap(x, y, zip, rad) {
     // New map
     var map = new google.maps.Map(document.getElementById('map'), options);
 
-    markMap(zip, rad);
+    markMap(zip, rad, whatToEat);
 
     // Add Marker Function
     function addMarker(props) {
@@ -268,7 +308,7 @@ function initMap(x, y, zip, rad) {
         }
     }
 
-    function markMap(zip, rad) {
+    function markMap(zip, rad, whatToEat) {
         console.log(zip)
         console.log(rad)
         var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
@@ -286,7 +326,7 @@ function initMap(x, y, zip, rad) {
 
 
             //url to the zomato api that gets restaurants near me 
-            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + whatToEat + "&apikey=b04b207197c3222be87ccd76e5531dbe";
 
             $.ajax({
                 url: zomatoNearMe,
@@ -362,10 +402,6 @@ function initMap(x, y, zip, rad) {
         });
     }
 }
-
-//Decision making logic
-var foodArray = [];
-var whatToEat;
 
 
 
