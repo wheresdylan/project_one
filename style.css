@@ -90,16 +90,23 @@ body, html {
     display: inline-block;
     left: 110%; 
 }
-#slide-left{
-    width: 100%;
-    overflow: hidden; 
-}
 #welcome-right {
     position: relative;
     display: inline-block; 
     right: 110%; 
 }
-#slide-right{
+
+#left-form {
+    position: relative;
+    display: inline-block;
+    left: 450%; 
+}
+#right-form {
+    position: relative;
+    display: inline-block;
+    right: 450%; 
+}
+.slide{
     width: 100%;
     overflow: hidden; 
 }

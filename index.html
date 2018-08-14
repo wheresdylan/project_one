@@ -28,7 +28,7 @@
     <!-- FRONT PAGE -->
     <div class="container" id="welcomePage">
         <div class="row">
-            <div class="col-sm-6" id="slide-left">
+            <div class="col-sm-6 slide">
                 <div id="welcome-left">
                     <h3>THE GREAT FOOD FEUD:</h3>
                     <div class="panel panel-default">
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6" id="slide-left">
+            <div class="col-sm-6 slide">
                 <!-- RIGHT PANEL -->
                 <div id="welcome-right">
                     <div class="panel panel-default">
@@ -81,45 +81,48 @@
             <div class="col-sm-12" id="user-choice-body">
                 <form>
                     <div class="row">
-                        <div class="col-sm-6" id='left-form'>
-                            <h3>Second user:
-                                <br>Tell us what you'd prefer:</h3>
-                            <br>
-                            <!-- Dropdown for user1: input #1 -->
-                            <label class="dd-label" for "user1-Choice1">
-                                <p>Select your 1st choice:</p>
-                            </label>
-                            <select class="dropdown" id="user1-Choice1"></select>
-                            <br>
-                            <!-- Dropdown for user1: input #2 -->
-                            <label class="dd-label" for "user1-Choice2">
-                                <p>Select your 2nd choice:</p>
-                            </label>
-                            <select class="dropdown" id="user1-Choice2"></select>
-                            <br>
-                            <!-- <input type="submit" id="submitUserChoice"> -->
-                            <button type="submit" id="submitUserChoice" class="btn btn-dark">
-                                <span class="alltxt">Pick for us!</span>
-                            </button>
+                        <div class="col-sm-6 slide">
+                            <div id='left-form'>
+                                <h3>Second user:
+                                    <br>Tell us what you'd prefer:</h3>
+                                <br>
+                                <!-- Dropdown for user1: input #1 -->
+                                <label class="dd-label" for "user1-Choice1">
+                                    <p>Select your 1st choice:</p>
+                                </label>
+                                <select class="dropdown" id="user1-Choice1"></select>
+                                <br>
+                                <!-- Dropdown for user1: input #2 -->
+                                <label class="dd-label" for "user1-Choice2">
+                                    <p>Select your 2nd choice:</p>
+                                </label>
+                                <select class="dropdown" id="user1-Choice2"></select>
+                                <br>
+                                <!-- <input type="submit" id="submitUserChoice"> -->
+                                <button type="submit" id="submitUserChoice" class="btn btn-dark">
+                                    <span class="alltxt">Pick for us!</span>
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="col-sm-6" id='right-form'>
-                            <!--User 2 inputs  -->
-                            <h3>First user:
-                                <br>What would you like to eat?</h3>
-                            <p>(Your first choice will weigh more heavily)</p>
-                            <br>
-                            <label class="dd-label" for "user2-Choice1">
-                                <p>Select your 1st choice:</p>
-                            </label>
-                            <select class="dropdown" id="user2-Choice1"></select>
-                            <br>
-                            <label class="dd-label" for "user2-Choice2">
-                                <p>Select your 2nd choice:</p>
-                            </label>
-                            <select class="dropdown" id="user2cd-Choice2"></select>
-                            <br>
-
+                        <div class="col-sm-6 slide">
+                            <div id='right-form'>
+                                <!--User 2 inputs  -->
+                                <h3>First user:
+                                    <br>What would you like to eat?</h3>
+                                <p>(Your first choice will weigh more heavily)</p>
+                                <br>
+                                <label class="dd-label" for "user2-Choice1">
+                                    <p>Select your 1st choice:</p>
+                                </label>
+                                <select class="dropdown" id="user2-Choice1"></select>
+                                <br>
+                                <label class="dd-label" for "user2-Choice2">
+                                    <p>Select your 2nd choice:</p>
+                                </label>
+                                <select class="dropdown" id="user2cd-Choice2"></select>
+                                <br>
+                            </div>
                         </div>
                     </div>
                 </form>
