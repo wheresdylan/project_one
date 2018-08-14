@@ -256,20 +256,6 @@ $(document).ready(function () {
 
                             $('#' + i + 'imageInput').append(restarauntHeading);
 
-                            // //adding the rating
-                            // var newRating = $('<h6>');
-                            // newRating.addClass("newRating");
-                            // newRating.html("Rating " + aggregatedRating);
-
-                            // $('#'+ i +'imageInput').append(newRating);
-
-                            // //adds the average cost for two
-                            // var cost = $('<h6>');
-                            // cost.addClass("newCost");
-                            // cost.html("Average Cost for Two: " + averageCost + "$");
-
-                            // $('#'+ i +'imageInput').append(cost);
-
 
 
                             // //review for a certain restaurant with id
