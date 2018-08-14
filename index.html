@@ -127,13 +127,29 @@
         </div>
     </div>
 
+    <div class="container rounded" id="coinFlip" style="display: none;">
+        <div id="coin">
+            <div class="side-a"></div>
+            <div class="side-b"></div>
+        </div>
+    </div>
+
+
+    <!-- row for the food type result -->
     <!-- THIRD PAGE: THE DECISION AND RESTAURANT LOCATIONS -->
     <div class="container rounded" id="userResult" style="display: none;">
-        <h1 id="decisionMade">
-
+        <h1 id="decisionMade">      
         </h1>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm">
+                <label>
+                    <p>Decision has been made !! </p>
+                    <span>Decision result goes here</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
                 <div id="user-result-body">
                     <label for="formGroupExampleInput2">
                         <p>Your food choice is:</p>
@@ -179,7 +195,9 @@
 
                 </div>
             </div>
-            <div class="col-sm-6">
+        </div>
+        <div class="row">
+            <div class="col-sm">
                 <div id="map-holder">
                     <p>Now...go eat:</p>
                     <div id="map">
@@ -188,7 +206,6 @@
             </div>
         </div>
     </div>
-
     <script src="app.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o">
