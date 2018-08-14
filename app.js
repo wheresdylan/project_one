@@ -1,20 +1,20 @@
-// jQuery(document).ready(function ($) {
-//     $('#submitUserChoice').on('click', function () {
-//         $('#coin').show();
-//         var flipResult = Math.random();
-//         $('#coin').removeClass();
-//         setTimeout(function () {
-//             if (flipResult <= 0.5) {
-//                 $('#coin').addClass('heads');
-//                 console.log('it is head');
-//             }
-//             else {
-//                 $('#coin').addClass('tails');
-//                 console.log('it is tails');
-//             }
-//         }, 100);
-//     });
-// });
+jQuery(document).ready(function ($) {
+    $('#submitUserChoice').on('click', function () {
+        $('#coinFlip').show();
+        var flipResult = Math.random();
+        $('#coin').removeClass();
+        setTimeout(function () {
+            if (flipResult <= 0.5) {
+                $('#coin').addClass('heads');
+                console.log('it is head');
+            }
+            else {
+                $('#coin').addClass('tails');
+                console.log('it is tails');
+            }
+        }, 100);
+    });
+});
 
 $(document).ready(function () {
     // $(".getStarted").on("click", function () {
@@ -68,21 +68,9 @@ $(document).ready(function () {
         newBackground();
 
 
-
         zipCode = $("#zip").val().trim();
         radius = $("#distance").val().trim();
         radius = radius * 1609.344;
-
-        // //populating the array with userinput cuisines
-        // var emptyCuisineArray = [];
-        // for (var t = 0; t < 5; t++) {
-        //     //emptyCuisineArray.push(userChoiceOne)
-        //     //emptyCuisineArray.push(userChoiceTwo)
-        //     //emptyCuisineArray.push(secondChoiceOne)
-        //     //emptyCuisineArray.push(secondChoiceTwo)
-        // }
-
-
 
         var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
 
@@ -145,9 +133,9 @@ $(document).ready(function () {
             //         else {
             //             $('#coin').addClass('tails');
             //         }
-                    
+
             //     }, 100);
-               
+
             $("#submitUserChoice").on("click", function (event) {
                 event.preventDefault();
 

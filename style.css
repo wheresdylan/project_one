@@ -81,6 +81,7 @@ body, html {
     min-height: 390px;
     
 }
+
 #getStarted{
     font-weight: 600;
 }
@@ -153,17 +154,18 @@ h3{
 
 .coinbody {
     padding-top: 50px;
-    background: #F7F7F7;
+    background: black;
     /* -webkit-perspective: 800px; */
   }
   
   #coin {
     position: relative;
     margin: 0 auto;
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 300px;
     cursor: pointer;
   }
+
   #coin div {
     width: 100%;
     height: 100%;
@@ -175,10 +177,20 @@ h3{
             box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
   }
   .side-a {
-    background-color: #bb0000;
+    background: url("/Users/jyoti/project_one/assets/images/tails.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
   }
   .side-b {
-    background-color: #3e3e3e;
+    background: url("/Users/jyoti/project_one/assets/images/heads.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;    
   }
   
   #coin {

@@ -27,8 +27,6 @@
 
     <div class="container" id="welcomePage">
         <div class="row">
-            <!-- <div class="col-sm-1">
-            </div> -->
             <div class="col-sm-6">
                 <div id="welcome-left">
                     <h3>THE GREAT FOOD FEUD:</h3>
@@ -46,9 +44,7 @@
                 <div id="welcome-right">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-
                             <p>Tell us about where you are, and where you'll drive:</p>
-
                         </div>
                         <div class="panel-body">
                             <form id='top-form'>
@@ -65,7 +61,6 @@
                                 </div>
 
                                 <button type="submit" id="submitZipCode" class="btn btn-dark">Submit</button>
-
                             </form>
                         </div>
                     </div>
@@ -92,7 +87,6 @@
                             <br>
                         </div>
 
-
                         <div class="col-sm-6" id='right-form'>
                             <!--User 2 inputs  -->
                             <label for "user2-Choice1">Select your 1st choice</label>
@@ -111,27 +105,30 @@
         </div>
     </div>
 
-    <!-- Coin flip div -->
-    <div class="coinbody" id="coinDisplay" style="display: none;">
+    <div class="container" id="coinFlip">
         <div id="coin">
             <div class="side-a"></div>
             <div class="side-b"></div>
         </div>
     </div>
-    </div>
+
 
     <!-- Search results to be displayed -->
-    <div class="container rounded" id="userResult" style="display: none;">
+    <div class="container rounded" id="userResult" style="display:none;">
         <!-- row for the food type result -->
         <div class="row">
-            <div class="col-sm-6" id="user-result-body">
+
+        </div>
+        <div class="row">
+            <div id="user-result-body">
                 <label for="formGroupExampleInput2">Location results</label>
                 <div id="location-Result"> Pull the restaurant result
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div id="map">
-                </div>
+        </div>
+
+        <div class="row">
+            <div id="map">
             </div>
         </div>
     </div>
