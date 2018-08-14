@@ -1,6 +1,14 @@
 
 $(document).ready(function () {
-    $('#coinFlip').hide();
+    $(".getStarted").on("click", function () {
+        // showUserForm();
+        newBackground();
+        console.log("GET STARTED")
+        $('#welcomePage').hide();
+        $('#userChoiceFormTwo').hide();
+        $('#userChoiceForm').show();
+    })
+
     /// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
     var randBG = Math.floor(Math.random() * 12) + 1;
     var newBG = $(".bg").attr("style", "background-image: linear-gradient(to right, rgb(35, 37, 40), transparent 10%,transparent 44%, rgb(35, 37, 40) 48%, rgb(35, 37, 40) 52%, transparent 56%,transparent 90%,rgb(35, 37, 40) 100%), url('assets/images/splice" + randBG + ".jpg');");
@@ -19,10 +27,10 @@ $(document).ready(function () {
     }
 
     function showUserDecision() {
+        event.preventDefault();
         $('#welcomePage').hide();
-        // Deleted userChoiceFormTwo
+        $('#userChoiceFormTwo').hide();
         $('#userChoiceForm').hide();
-        $('#coinFlip').hide();
         $('#userResult').show();
         newBG = newBG;
     }
@@ -33,23 +41,21 @@ $(document).ready(function () {
     var radius;
 
 
-    $("#submitZipCode").on("click", function () {
+    $("#submitZipCode").on("click", function (event) {
         // showUserDecision();
-
         event.preventDefault();
         console.log("SUBMIT ZIP")
-
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
-        $('#coinFlip').hide();
         $('#userChoiceForm').show();
-
         newBackground();
+
 
 
         zipCode = $("#zip").val().trim();
         radius = $("#distance").val().trim();
         radius = radius * 1609.344;
+
 
         var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
 
@@ -70,7 +76,7 @@ $(document).ready(function () {
 
 
             // cuisines near me
-            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
             $.ajax({
                 url: zomatoCuiNearMe,
@@ -96,7 +102,7 @@ $(document).ready(function () {
                 }
                 $('#userChoiceFormTwo').show();
 
-                console.log($(".dropdown-menu :selected").text());
+                // console.log($(".dropdown-menu :selected").text());
             });
 
             $("#submitUserChoice").on("click", function (event) {
@@ -119,6 +125,36 @@ $(document).ready(function () {
                 }
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
+
+                $("#decisionMade").html(whatToEat);
+
+                if (whatToEat === "BBQ") {
+                    whatToEat = 193
+                } else if (whatToEat === "Italian") {
+                    whatToEat = 55
+                } else if (whatToEat === "Chinese") {
+                    whatToEat = 25
+                } else if (whatToEat === "Thai") {
+                    whatToEat = 95
+                } else if (whatToEat === "American") {
+                    whatToEat = 1
+                } else if (whatToEat === "Seafood") {
+                    whatToEat = 83
+                } else if (whatToEat === "Vietnamese") {
+                    whatToEat = 99
+                } else if (whatToEat === "Vegetarian") {
+                    whatToEat = 308
+                } else if (whatToEat === "Pizza") {
+                    whatToEat = 82
+                } else if (whatToEat === "Mexican") {
+                    whatToEat = 73
+                } else if (whatToEat === "Indian") {
+                    whatToEat = 148
+                } else if (whatToEat === "Desserts") {
+                    whatToEat = 100
+                }
+
+                newBackgroundPlain();
                 console.log(whatToEat);
                 newBackground();
                 showUserDecision();
@@ -231,73 +267,6 @@ $(document).ready(function () {
                     })
                 });
 
-                $('#welcomePage').hide();
-                $('#userChoiceFormTwo').hide();
-                $('#userChoiceForm').hide();
-
-                // To flip the coin
-                $('#coinFlip').show();
-                
-                var flipResult = Math.random();
-                $('#coin').removeClass();
-                setTimeout(function () {
-                    if (flipResult <= 0.5) {
-                        $('#coin').addClass('heads');
-                        console.log('it is head');
-                    }
-                    else {
-                        $('#coin').addClass('tails');
-                        console.log('it is tails');
-                    }
-                }, 100);
-
-
-                // time out to display the result in next page
-
-                setTimeout(function () {
-                    newBackground();
-                    showUserDecision();
-
-                    initMap(locationLatitude, locationLongitude, zipCode, radius);
-
-
-                    //url to the zomato api that gets restaurants near me 
-                    var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
-
-                    $.ajax({
-                        url: zomatoNearMe,
-                        method: "GET"
-                    }).then(function (response) {
-
-                        console.log(response);
-
-                        for (var i = 0; i < 10; i++) {
-                            var averageCost = (response.restaurants[i].restaurant.average_cost_for_two);
-                            var restaurantId = (response.restaurants[i].restaurant.id);
-                            var restaurantCuisines = (response.restaurants[i].restaurant.cuisines);
-                            var restaurantName = (response.restaurants[i].restaurant.name);
-                            var restaurantMenuUrl = (response.restaurants[i].restaurant.menu_url);
-                            var priceRange = (response.restaurants[i].restaurant.price_range);
-                            var address = (response.restaurants[i].restaurant.location.address);
-                            var latitude = (response.restaurants[i].restaurant.location.latitude);
-                            var longitude = (response.restaurants[i].restaurant.location.longitude);
-                            var featuredImage = (response.restaurants[i].restaurant.featured_image);
-                            var aggregatedRating = (response.restaurants[i].restaurant.user_rating.aggregate_rating);
-                            var ratingText = (response.restaurants[i].restaurant.user_rating.rating_text);
-
-                            //review for a certain restaurant with id
-                            var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
-
-                            $.ajax({
-                                url: zomatoReview,
-                                method: "GET"
-                            }).then(function (response) {
-                                // console.log(response);
-                            });
-                        }
-                    });
-                }, 3000);
-                // end of the coin flip 
             });
 
         });
@@ -306,35 +275,25 @@ $(document).ready(function () {
 });
 
 //WELCOME PAGE - GRAY BOX SLIDE OUT ANIMATION//
-$(document).ready(function () {
-    $("#welcome-left").animate({ left: "0" }, {
-        duration: 2000
+$(document).ready(function() {
+    $("#welcome-left").animate({left: "0"}, {
+        duration: 2000    
     });
-    $("#welcome-right").animate({ right: "0" }, {
-        duration: 2000
+    $("#welcome-right").animate({right: "0"}, {
+        duration: 2000       
     });
 });
 
 //this is where the map is displayed and populated
 
-var foodObj =
-{
-    BBQ: 193,
-    italian: 55,
-    chinese: 25,
-    thai: 95,
-    american: 1,
-    seafood: 83,
-    vietnamese: 99,
-    vegetarian: 308,
-    pizza: 82,
-    mexican: 73,
-    indian: 148,
-    desserts: 100
-}
 
 
-function initMap(x, y, zip, rad) {
+// Decision making logic
+var foodArray = [];
+var whatToEat;
+
+
+function initMap(x, y, zip, rad, whatToEat) {
     // Map options
     var options = {
         zoom: 12,
@@ -344,7 +303,7 @@ function initMap(x, y, zip, rad) {
     // New map
     var map = new google.maps.Map(document.getElementById('map'), options);
 
-    markMap(zip, rad);
+    markMap(zip, rad, whatToEat);
 
     // Add Marker Function
     function addMarker(props) {
@@ -377,7 +336,7 @@ function initMap(x, y, zip, rad) {
         }
     }
 
-    function markMap(zip, rad) {
+    function markMap(zip, rad, whatToEat) {
         console.log(zip)
         console.log(rad)
         var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zip + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
@@ -395,7 +354,7 @@ function initMap(x, y, zip, rad) {
 
 
             //url to the zomato api that gets restaurants near me 
-            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + whatToEat + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
             $.ajax({
                 url: zomatoNearMe,
@@ -459,6 +418,7 @@ function initMap(x, y, zip, rad) {
 
                 ];
 
+
                 //populating the markers
 
                 for (var i = 0; i < markers.length; i++) {
@@ -487,13 +447,6 @@ function initMap(x, y, zip, rad) {
         });
     }
 }
-
-//Decision making logic
-var foodArray = [];
-var whatToEat;
-
-
-
 
 
 

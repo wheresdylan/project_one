@@ -81,7 +81,6 @@ body, html {
     min-height: 390px;
 
 }
-
 #getStarted{
     font-weight: 600;
 }
@@ -228,97 +227,7 @@ h4{
     text-align: center;
 }
 
-/* CSS For coin flip */
 
-.coinbody {
-    padding-top: 50px;
-    background: black;
-    /* -webkit-perspective: 800px; */
-  }
-  
-  #coin {
-    position: relative;
-    margin: 0 auto;
-    width: 300px;
-    height: 300px;
-    cursor: pointer;
-    margin-top: 150px;
-  }
-
-
-
-#imageInput{
-    width:500px;
-}
-
-/* coin flip */
-
-  #coin div {
-    width: 100%;
-    height: 100%;
-    -webkit-border-radius: 50%;
-       -moz-border-radius: 50%;
-            border-radius: 50%;
-    -webkit-box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-       -moz-box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-            box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-  }
-  .side-a {
-    background: url("./assets/images/tails.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-  }
-  .side-b {
-    background: url("./assets/images/heads.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;    
-  }
-  
-  #coin {
-    transition: -webkit-transform 1s ease-in;
-    -webkit-transform-style: preserve-3d;
-  }
-  #coin div {
-    position: absolute;
-    -webkit-backface-visibility: hidden;
-  }
-  .side-a {
-    z-index: 100;
-  }
-  .side-b {
-    -webkit-transform: rotateY(-180deg);
-  
-  }
-  
-  #coin.heads {
-    -webkit-animation: flipHeads 5s ease-out forwards;
-    -moz-animation: flipHeads 5s ease-out forwards;
-      -o-animation: flipHeads 5s ease-out forwards;
-         animation: flipHeads 5s ease-out forwards;
-  }
-  #coin.tails {
-    -webkit-animation: flipTails 5s ease-out forwards;
-    -moz-animation: flipTails 5s ease-out forwards;
-      -o-animation: flipTails 5s ease-out forwards;
-         animation: flipTails 5s ease-out forwards;
-  }
-  
-  @-webkit-keyframes flipHeads {
-    from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
-    to { -webkit-transform: rotateY(1800deg); -moz-transform: rotateY(1800deg); transform: rotateY(1800deg); }
-  }
-  @-webkit-keyframes flipTails {
-    from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
-    to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
-  }
-  
-  
 
 /* MEDIA QUERIES BELOW */
 
