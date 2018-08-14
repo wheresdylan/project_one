@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Project One</title>
+    <title>Decider: A Food Fight Resolution Tool</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Firebase -->
@@ -25,11 +25,11 @@
 
 <body class="bg">
 
+    <!-- FRONT PAGE -->
     <div class="container" id="welcomePage">
         <div class="row">
-            <!-- <div class="col-sm-1">
-            </div> -->
             <div class="col-sm-6">
+                <!-- LEFT PANEL -->
                 <div id="welcome-left">
                     <h3>THE GREAT FOOD FEUD:</h3>
                     <div class="panel panel-default">
@@ -43,12 +43,11 @@
                 </div>
             </div>
             <div class="col-sm-6">
+                <!-- RIGHT PANEL -->
                 <div id="welcome-right">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-
                             <p>Tell us about where you are, and where you'll drive:</p>
-
                         </div>
                         <div class="panel-body">
                             <form id='top-form'>
@@ -57,15 +56,13 @@
                                     <label for="zipInput">Location</label>
                                     <input type="text" class="form-control" id="zip" placeholder="Please enter your ZIP code">
                                 </div>
-
                                 <!-- Distance -->
                                 <div class="form-group">
                                     <label for="distanceInput">Distance</label>
                                     <input type="text" class="form-control" id="distance" placeholder="How far are you willing to travel? (in miles)">
                                 </div>
-
+                                <!-- Submit Button -->
                                 <button type="submit" id="submitZipCode" class="btn btn-dark">Submit</button>
-
                             </form>
                         </div>
                     </div>
@@ -74,6 +71,7 @@
         </div>
     </div>
 
+    <!-- PAGE TWO: USER PREFERENCES -->
     <div class="container rounded" id="userChoiceForm" style="display: none;">
         <div class="row">
             <div class="col-sm-12" id="user-choice-body">
@@ -91,7 +89,6 @@
                             <select class="dropdown" id="user1-Choice2"></select>
                             <br>
                         </div>
-
 
                         <div class="col-sm-6" id='right-form'>
                             <!--User 2 inputs  -->
@@ -111,19 +108,17 @@
         </div>
     </div>
 
-    </div>
-    </div>
-
-    <!-- Search results to be displayed -->
+    <!-- THIRD PAGE: THE DECISION AND RESTAURANT LOCATIONS -->
     <div class="container rounded" id="userResult" style="display: none;">
-        <!-- row for the food type result -->
         <div class="row">
             <div class="col-sm-6" id="user-result-body">
+                <!-- Food results go here! -->
                 <label for="formGroupExampleInput2">Location results</label>
                 <div id="location-Result"> Pull the restaurant result
                 </div>
             </div>
             <div class="col-sm-6">
+                <!-- The Map! -->
                 <div id="map">
                 </div>
             </div>
