@@ -100,8 +100,8 @@ $(document).ready(function () {
             });
 
             $("#submitUserChoice").on("click", function (event) {
-                event.preventDefault();
 
+                event.preventDefault();
                 var user1Choice1 = $("#user1-Choice1").val();
                 var user1Choice2 = $("#user1-Choice2").val();
                 var user2Choice1 = $("#user2-Choice1").val();
@@ -124,7 +124,7 @@ $(document).ready(function () {
                 $('#userChoiceFormTwo').hide();
                 $('#userChoiceForm').hide();
 
-
+                // To flip the coin
                 $('#coinFlip').show();
                 var flipResult = Math.random();
                 $('#coin').removeClass();
@@ -138,6 +138,9 @@ $(document).ready(function () {
                         console.log('it is tails');
                     }
                 }, 100);
+
+
+                // time out to display the result in next page
 
                 setTimeout(function () {
                     newBackground();
@@ -182,7 +185,7 @@ $(document).ready(function () {
                         }
                     });
                 }, 3000);
-
+                // end of the coin flip 
             });
 
         });
