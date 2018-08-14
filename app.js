@@ -75,7 +75,7 @@ $(document).ready(function () {
 
 
             // cuisines near me
-            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=b04b207197c3222be87ccd76e5531dbe";
+            var zomatoCuiNearMe = "https://developers.zomato.com/api/v2.1/cuisines?lat=" + locationLatitude + "&lon=" + locationLongitude + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
             $.ajax({
                 url: zomatoCuiNearMe,
@@ -162,7 +162,7 @@ $(document).ready(function () {
 
 
                 //url to the zomato api that gets restaurants near me 
-                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + whatToEat + "&apikey=b04b207197c3222be87ccd76e5531dbe";
+                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + whatToEat + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
                 $.ajax({
                     url: zomatoNearMe,
@@ -204,47 +204,48 @@ $(document).ready(function () {
 
                         //new div for image container
                         var newDiv = $("<div>");
-                        newDiv.addClass("imageContainer");
+                        newDiv.addClass("carousel-item");
                         newDiv.attr("id", i + "imageInput");
 
-                        $('#restarauntImages').append(newDiv);
+                        $('.carousel-inner').append(newDiv);
 
 
                         //adds new image
                         var img = $('<img />').attr({
-                            'class': "newImage",
+                            'class': "d-block w-100",
                             "href": restarauntSite,
                             'src': featuredImage,
                             'id': i
                         }).appendTo('#'+ i +'imageInput');
 
 
-                        //adds name of restaraunt
-                        var restarauntHeading = $('<h6>');
-                        restarauntHeading.addClass("restarauntName");
+                        // adds name of restaraunt
+                        var restarauntHeading = $('<h4>');
+                        restarauntHeading.addClass("carousel-caption d-none d-md-block");
                         restarauntHeading.attr("id", i );
                         restarauntHeading.attr("href", restarauntSite );
                         restarauntHeading.html(restaurantName);
 
                         $('#'+ i +'imageInput').append(restarauntHeading);
 
-                        //adding the rating
-                        var newRating = $('<h6>');
-                        newRating.addClass("newRating");
-                        newRating.html("Rating " + aggregatedRating);
+                        // //adding the rating
+                        // var newRating = $('<h6>');
+                        // newRating.addClass("newRating");
+                        // newRating.html("Rating " + aggregatedRating);
 
-                        $('#'+ i +'imageInput').append(newRating);
+                        // $('#'+ i +'imageInput').append(newRating);
 
-                        //adds the average cost for two
-                        var cost = $('<h6>');
-                        cost.addClass("newCost");
-                        cost.html("Average Cost for Two: " + averageCost + "$");
+                        // //adds the average cost for two
+                        // var cost = $('<h6>');
+                        // cost.addClass("newCost");
+                        // cost.html("Average Cost for Two: " + averageCost + "$");
 
-                        $('#'+ i +'imageInput').append(cost);
+                        // $('#'+ i +'imageInput').append(cost);
+
 
 
                         // //review for a certain restaurant with id
-                        // var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=b04b207197c3222be87ccd76e5531dbe";
+                        // var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=df0e8b14ef12c3734454e5a4082ff386";
                         // $.ajax({
                         //     url: zomatoReview,
                         //     method: "GET"
@@ -259,7 +260,7 @@ $(document).ready(function () {
                         window.open(addressValue, '_blank');
                     })
 
-                    $(".newImage").on('click', function(){
+                    $(".w-100").on('click', function(){
                         var addressValue = $(this).attr("href");
                         window.open(addressValue, '_blank');
                     })
@@ -352,7 +353,7 @@ function initMap(x, y, zip, rad, whatToEat) {
 
 
             //url to the zomato api that gets restaurants near me 
-            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + whatToEat + "&apikey=b04b207197c3222be87ccd76e5531dbe";
+            var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + rad + ".4&cuisines=" + whatToEat + "&apikey=df0e8b14ef12c3734454e5a4082ff386";
 
             $.ajax({
                 url: zomatoNearMe,
@@ -364,53 +365,53 @@ function initMap(x, y, zip, rad, whatToEat) {
 
                     {
                         coords: { lat: parseFloat(response.restaurants[0].restaurant.location.latitude), lng: parseFloat(response.restaurants[0].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[0].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[0].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[0].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[0].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[1].restaurant.location.latitude), lng: parseFloat(response.restaurants[1].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[1].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[1].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[1].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[1].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[2].restaurant.location.latitude), lng: parseFloat(response.restaurants[2].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[2].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[2].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[2].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[2].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[3].restaurant.location.latitude), lng: parseFloat(response.restaurants[3].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[3].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[3].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[3].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[3].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[4].restaurant.location.latitude), lng: parseFloat(response.restaurants[4].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[4].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[4].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[4].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[4].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[5].restaurant.location.latitude), lng: parseFloat(response.restaurants[5].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[5].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[5].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[5].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[5].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[6].restaurant.location.latitude), lng: parseFloat(response.restaurants[6].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[6].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[6].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[6].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[6].restaurant.url
 
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[7].restaurant.location.latitude), lng: parseFloat(response.restaurants[7].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[7].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[7].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[7].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[7].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[8].restaurant.location.latitude), lng: parseFloat(response.restaurants[8].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[8].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[8].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[9].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[8].restaurant.url
                     },
                     {
                         coords: { lat: parseFloat(response.restaurants[9].restaurant.location.latitude), lng: parseFloat(response.restaurants[9].restaurant.location.longitude) },
-                        content: '<h5>' + response.restaurants[9].restaurant.name + '</h5>',
+                        content: '<h5>' + response.restaurants[9].restaurant.name + '</h5><h5> Rating: ' + response.restaurants[9].restaurant.user_rating.aggregate_rating + '</h5>',
                         url: response.restaurants[9].restaurant.url
                     }
 
@@ -425,7 +426,7 @@ function initMap(x, y, zip, rad, whatToEat) {
                 }
 
                 //zoom to marker by floating over image
-                $(".newImage").hover( function(){
+                $(".w-100").hover( function(){
                     var addressValue = $(this).attr("id");
                     console.log(addressValue);
                     map.setZoom(17);

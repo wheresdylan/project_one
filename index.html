@@ -83,7 +83,8 @@
                     <div class="row">
                         <div class="col-sm-6" id='left-form'>
                             <h3>Second user:
-                                <br>Tell us what you'd prefer:</h3><br>
+                                <br>Tell us what you'd prefer:</h3>
+                            <br>
                             <!-- Dropdown for user1: input #1 -->
                             <label class="dd-label" for "user1-Choice1">
                                 <p>Select your 1st choice:</p>
@@ -106,7 +107,8 @@
                             <!--User 2 inputs  -->
                             <h3>First user:
                                 <br>What would you like to eat?</h3>
-                            <p>(Your first choice will weigh more heavily)</p><br>
+                            <p>(Your first choice will weigh more heavily)</p>
+                            <br>
                             <label class="dd-label" for "user2-Choice1">
                                 <p>Select your 1st choice:</p>
                             </label>
@@ -128,7 +130,7 @@
     <!-- THIRD PAGE: THE DECISION AND RESTAURANT LOCATIONS -->
     <div class="container rounded" id="userResult" style="display: none;">
         <h1 id="decisionMade">
-            
+
         </h1>
         <div class="row">
             <div class="col-sm-6">
@@ -136,10 +138,41 @@
                     <label for="formGroupExampleInput2">
                         <p>Your food choice is:</p>
                         <!-- The span below will display the user's final assigned pick: -->
-                        <p><span id="final-food-choice">      </span></p> 
+                        <p>
+                            <span id="final-food-choice"> </span>
+                        </p>
                     </label>
                     <div id="location-Result">
-                        <p>Pull the restaurant result</p>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
+
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="http://cdn.shopify.com/s/files/1/0454/6253/t/80/assets/logo.png?10316760128230765480" alt="First slide">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 <div id="restarauntImages">
