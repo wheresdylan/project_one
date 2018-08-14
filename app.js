@@ -1,30 +1,7 @@
-jQuery(document).ready(function ($) {
-    $('#submitUserChoice').on('click', function () {
-        $('#coinFlip').show();
-        var flipResult = Math.random();
-        $('#coin').removeClass();
-        setTimeout(function () {
-            if (flipResult <= 0.5) {
-                $('#coin').addClass('heads');
-                console.log('it is head');
-            }
-            else {
-                $('#coin').addClass('tails');
-                console.log('it is tails');
-            }
-        }, 100);
-    });
-});
 
 $(document).ready(function () {
-    // $(".getStarted").on("click", function () {
-    //     // showUserForm();
-    //     newBackground();
-    //     console.log("GET STARTED")
-    //     $('#welcomePage').hide();
-    //     $('#userChoiceFormTwo').hide();
-    //     $('#userChoiceForm').show();
-    // })
+
+    $('#coinFlip').hide();
 
     /// THIS SECTION SETS BACKGROUNDS RANDOMLY (AND INCLUDES THE OLD PAGE CLEARS)
     var randBG = Math.floor(Math.random() * 12) + 1;
@@ -44,10 +21,10 @@ $(document).ready(function () {
     }
 
     function showUserDecision() {
-        event.preventDefault();
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
         $('#userChoiceForm').hide();
+        $('#coinFlip').hide();
         $('#userResult').show();
         newBG = newBG;
     }
@@ -60,10 +37,12 @@ $(document).ready(function () {
 
     $("#submitZipCode").on("click", function () {
         // showUserDecision();
+
         event.preventDefault();
         console.log("SUBMIT ZIP")
         $('#welcomePage').hide();
         $('#userChoiceFormTwo').hide();
+        $('#coinFlip').hide();
         $('#userChoiceForm').show();
         newBackground();
 
@@ -120,22 +99,6 @@ $(document).ready(function () {
                 console.log($(".dropdown-menu :selected").text());
             });
 
-            // $("#submitUserChoice").on("click", function () {
-            //     // Code to flip before the decision is made!!
-            //     //debugger;
-            //     $('#coinDisplay').show();
-            //     var flipResult = Math.random();
-            //     $('#coin').removeClass();
-            //     setTimeout(function () {
-            //         if (flipResult <= 0.5) {
-            //             $('#coin').addClass('heads');
-            //         }
-            //         else {
-            //             $('#coin').addClass('tails');
-            //         }
-
-            //     }, 100);
-
             $("#submitUserChoice").on("click", function (event) {
                 event.preventDefault();
 
@@ -156,61 +119,69 @@ $(document).ready(function () {
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
                 console.log(whatToEat);
-                newBackground();
-                showUserDecision();
 
-                initMap(locationLatitude, locationLongitude, zipCode, radius);
+                $('#welcomePage').hide();
+                $('#userChoiceFormTwo').hide();
+                $('#userChoiceForm').hide();
 
 
-                //url to the zomato api that gets restaurants near me 
-                var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
-
-                $.ajax({
-                    url: zomatoNearMe,
-                    method: "GET"
-                }).then(function (response) {
-
-                    console.log(response);
-
-                    for (var i = 0; i < 10; i++) {
-                        var averageCost = (response.restaurants[i].restaurant.average_cost_for_two);
-                        var restaurantId = (response.restaurants[i].restaurant.id);
-                        var restaurantCuisines = (response.restaurants[i].restaurant.cuisines);
-                        var restaurantName = (response.restaurants[i].restaurant.name);
-                        var restaurantMenuUrl = (response.restaurants[i].restaurant.menu_url);
-                        var priceRange = (response.restaurants[i].restaurant.price_range);
-                        var address = (response.restaurants[i].restaurant.location.address);
-                        var latitude = (response.restaurants[i].restaurant.location.latitude);
-                        var longitude = (response.restaurants[i].restaurant.location.longitude);
-                        var featuredImage = (response.restaurants[i].restaurant.featured_image);
-                        var aggregatedRating = (response.restaurants[i].restaurant.user_rating.aggregate_rating);
-                        var ratingText = (response.restaurants[i].restaurant.user_rating.rating_text);
-
-                        // console.log(averageCost);
-                        // console.log(restaurantId);
-                        // console.log(restaurantCuisines);
-                        // console.log(restaurantName);
-                        // console.log(restaurantMenuUrl);
-                        // console.log(priceRange);
-                        // console.log(address);
-                        // console.log(latitude);
-                        // console.log(longitude);
-                        // console.log(featuredImage);
-                        // console.log(aggregatedRating);
-                        // console.log(ratingText);
-                        // console.log("END OF RESTAURANT");
-
-                        //review for a certain restaurant with id
-                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
-
-                        $.ajax({
-                            url: zomatoReview,
-                            method: "GET"
-                        }).then(function (response) {
-                            // console.log(response);
-                        });
+                $('#coinFlip').show();
+                var flipResult = Math.random();
+                $('#coin').removeClass();
+                setTimeout(function () {
+                    if (flipResult <= 0.5) {
+                        $('#coin').addClass('heads');
+                        console.log('it is head');
                     }
-                });
+                    else {
+                        $('#coin').addClass('tails');
+                        console.log('it is tails');
+                    }
+                }, 100);
+
+                setTimeout(function () {
+                    newBackground();
+                    showUserDecision();
+
+                    initMap(locationLatitude, locationLongitude, zipCode, radius);
+
+
+                    //url to the zomato api that gets restaurants near me 
+                    var zomatoNearMe = "https://developers.zomato.com/api/v2.1/search?entity_type=zone&count=10&lat=" + locationLatitude + "&lon=" + locationLongitude + "&radius=" + radius + ".4&cuisines=" + foodObj.italian + "&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+
+                    $.ajax({
+                        url: zomatoNearMe,
+                        method: "GET"
+                    }).then(function (response) {
+
+                        console.log(response);
+
+                        for (var i = 0; i < 10; i++) {
+                            var averageCost = (response.restaurants[i].restaurant.average_cost_for_two);
+                            var restaurantId = (response.restaurants[i].restaurant.id);
+                            var restaurantCuisines = (response.restaurants[i].restaurant.cuisines);
+                            var restaurantName = (response.restaurants[i].restaurant.name);
+                            var restaurantMenuUrl = (response.restaurants[i].restaurant.menu_url);
+                            var priceRange = (response.restaurants[i].restaurant.price_range);
+                            var address = (response.restaurants[i].restaurant.location.address);
+                            var latitude = (response.restaurants[i].restaurant.location.latitude);
+                            var longitude = (response.restaurants[i].restaurant.location.longitude);
+                            var featuredImage = (response.restaurants[i].restaurant.featured_image);
+                            var aggregatedRating = (response.restaurants[i].restaurant.user_rating.aggregate_rating);
+                            var ratingText = (response.restaurants[i].restaurant.user_rating.rating_text);
+
+                            //review for a certain restaurant with id
+                            var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=86d2fb4ee7402fb4545ed54f0dc87d93";
+
+                            $.ajax({
+                                url: zomatoReview,
+                                method: "GET"
+                            }).then(function (response) {
+                                // console.log(response);
+                            });
+                        }
+                    });
+                }, 3000);
 
             });
 
@@ -220,12 +191,12 @@ $(document).ready(function () {
 });
 
 //WELCOME PAGE - GRAY BOX SLIDE OUT ANIMATION//
-$(document).ready(function() {
-    $("#welcome-left").animate({left: "0"}, {
-        duration: 2000    
+$(document).ready(function () {
+    $("#welcome-left").animate({ left: "0" }, {
+        duration: 2000
     });
-    $("#welcome-right").animate({right: "0"}, {
-        duration: 2000       
+    $("#welcome-right").animate({ right: "0" }, {
+        duration: 2000
     });
 });
 

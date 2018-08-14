@@ -37,7 +37,8 @@
                             <br>
                             <p>Choosing where to eat is tough.</p>
                             <br>
-                            <p>If two of you can't agree on a type of food,<br> we can help...</p>
+                            <p>If two of you can't agree on a type of food,
+                                <br> we can help...</p>
                             <br>
                             <p>Let us make the choice for you!</p>
                         </div>
@@ -85,7 +86,8 @@
                     <div class="row">
                         <div class="col-sm-6" id='left-form'>
                             <h3>Second user:
-                                <br>Tell us what you'd prefer:</h3><br>
+                                <br>Tell us what you'd prefer:</h3>
+                            <br>
                             <!-- Dropdown for user1: input #1 -->
                             <label class="dd-label" for "user1-Choice1">
                                 <p>Select your 1st choice:</p>
@@ -108,7 +110,8 @@
                             <!--User 2 inputs  -->
                             <h3>First user:
                                 <br>What would you like to eat?</h3>
-                            <p>(Your first choice will weigh more heavily)</p><br>
+                            <p>(Your first choice will weigh more heavily)</p>
+                            <br>
                             <label class="dd-label" for "user2-Choice1">
                                 <p>Select your 1st choice:</p>
                             </label>
@@ -139,7 +142,15 @@
     <div class="container rounded" id="userResult" style="display:none;">
         <!-- row for the food type result -->
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm">
+                <label>
+                    <p>Decision has been made !! </p>
+                    <span>Decision result goes here</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
                 <div id="user-result-body">
                     <label for="formGroupExampleInput2">
                         <p>Location results</p>
@@ -149,7 +160,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+        </div>
+        <div class="row">
+            <div class="col-sm">
                 <div id="map-holder">
                     <p>Now...go eat:</p>
                     <div id="map">
@@ -158,7 +171,6 @@
             </div>
         </div>
     </div>
-
     <script src="app.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o">
