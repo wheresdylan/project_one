@@ -81,7 +81,6 @@ body, html {
     min-height: 390px;
 
 }
-
 #getStarted{
     font-weight: 600;
 }
@@ -222,19 +221,13 @@ h3{
     font-size: 2.3em;
 }
 
-.newImage{
-    margin:10px;
-    width:200px;
-
-}
-
-h6{
+h4{
     color:white;
-    border:2px solid black;
-    background-color: black;
     width:200px;
     text-align: center;
 }
+
+
 
 /* CSS For coin flip */
 
