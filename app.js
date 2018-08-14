@@ -55,16 +55,6 @@ $(document).ready(function () {
         radius = $("#distance").val().trim();
         radius = radius * 1609.344;
 
-        // //populating the array with userinput cuisines
-        // var emptyCuisineArray = [];
-        // for (var t = 0; t < 5; t++) {
-        //     //emptyCuisineArray.push(userChoiceOne)
-        //     //emptyCuisineArray.push(userChoiceTwo)
-        //     //emptyCuisineArray.push(secondChoiceOne)
-        //     //emptyCuisineArray.push(secondChoiceTwo)
-        // }
-
-
 
         var google = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipCode + "&key=AIzaSyA5r_QuTaaCHb-d0DBHlVBzB3rEtHJKt_o";
 
@@ -192,6 +182,7 @@ $(document).ready(function () {
                         var featuredImage = (response.restaurants[i].restaurant.featured_image);
                         var aggregatedRating = (response.restaurants[i].restaurant.user_rating.aggregate_rating);
                         var ratingText = (response.restaurants[i].restaurant.user_rating.rating_text);
+                        var restarauntSite = (response.restaurants[i].restaurant.url);
 
                         // console.log(averageCost);
                         // console.log(restaurantId);
@@ -208,30 +199,41 @@ $(document).ready(function () {
                         // console.log("END OF RESTAURANT");
 
 
+
+                        //new div for image container
                         var newDiv = $("<div>");
+                        newDiv.addClass("imageContainer");
                         newDiv.attr("id", i + "imageInput");
 
                         $('#restarauntImages').append(newDiv);
 
 
+                        //adds new image
                         var img = $('<img />').attr({
                             'class': "newImage",
+                            "href": restarauntSite,
                             'src': featuredImage,
+                            'id': i
                         }).appendTo('#'+ i +'imageInput');
 
 
+                        //adds name of restaraunt
                         var restarauntHeading = $('<h6>');
                         restarauntHeading.addClass("restarauntName");
+                        restarauntHeading.attr("id", i );
+                        restarauntHeading.attr("href", restarauntSite );
                         restarauntHeading.html(restaurantName);
 
                         $('#'+ i +'imageInput').append(restarauntHeading);
 
+                        //adding the rating
                         var newRating = $('<h6>');
                         newRating.addClass("newRating");
                         newRating.html("Rating " + aggregatedRating);
 
                         $('#'+ i +'imageInput').append(newRating);
 
+                        //adds the average cost for two
                         var cost = $('<h6>');
                         cost.addClass("newCost");
                         cost.html("Average Cost for Two: " + averageCost + "$");
@@ -239,15 +241,26 @@ $(document).ready(function () {
                         $('#'+ i +'imageInput').append(cost);
 
 
-                        //review for a certain restaurant with id
-                        var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=b04b207197c3222be87ccd76e5531dbe";
-                        $.ajax({
-                            url: zomatoReview,
-                            method: "GET"
-                        }).then(function (response) {
-                            // console.log(response);
-                        });
+                        // //review for a certain restaurant with id
+                        // var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=b04b207197c3222be87ccd76e5531dbe";
+                        // $.ajax({
+                        //     url: zomatoReview,
+                        //     method: "GET"
+                        // }).then(function (response) {
+                        //     // console.log(response);
+                        // });
                     }
+
+                    //make name clickable and send to restaraunt site
+                    $(".restarauntName").on('click', function(){
+                        var addressValue = $(this).attr("href");
+                        window.open(addressValue, '_blank');
+                    })
+
+                    $(".newImage").on('click', function(){
+                        var addressValue = $(this).attr("href");
+                        window.open(addressValue, '_blank');
+                    })
                 });
 
             });
@@ -401,12 +414,29 @@ function initMap(x, y, zip, rad, whatToEat) {
 
                 ];
 
+
                 //populating the markers
 
                 for (var i = 0; i < markers.length; i++) {
                     // Add marker
                     addMarker(markers[i]);
                 }
+
+                //zoom to marker by floating over image
+                $(".newImage").hover( function(){
+                    var addressValue = $(this).attr("id");
+                    console.log(addressValue);
+                    map.setZoom(17);
+                    map.setCenter({lat:parseFloat(response.restaurants[addressValue].restaurant.location.latitude), lng:parseFloat(response.restaurants[addressValue].restaurant.location.longitude)});
+                });
+
+                //zoom to marker by hovering over name text
+                $(".restarauntName").hover( function(){
+                    var addressValue = $(this).attr("id");
+                    console.log(addressValue);
+                    map.setZoom(17);
+                    map.setCenter({lat:parseFloat(response.restaurants[addressValue].restaurant.location.latitude), lng:parseFloat(response.restaurants[addressValue].restaurant.location.longitude)});
+                });
 
             });
 
