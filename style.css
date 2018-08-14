@@ -196,7 +196,7 @@ body, html {
     min-height: 390px;
 }
 .dropdown{
-    
+    padding: 0px;
 }
 .dd-label{
     padding-left: 0px;
@@ -254,8 +254,136 @@ h6{
 }
 
 @media screen and (max-width: 640px){
+    #welcome-left{
+        background:#eee ;
+        height: 40vh;
+        width: 85%;
+        margin-top: 5vh;
+        /* background-position: right; */
+        color: rgb(35, 37, 40);
+        float: right;
+        text-align: right;
+        padding-top: 2vh;
+        padding-left: 15px;
+        padding-right: 5px;
+        min-height: 30vh;
+        border: 10px solid rgb(31, 33, 37);
+        line-height: 110%;
+    }
+    #welcome-right{
+        background: rgb(35, 37, 40);
+        height: 45vh;
+        width: 85%;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        background-position: left;
+        color: #eee;
+        float: left;
+        text-align: left;
+        padding-top: 2vh;
+        padding-left: 5px;
+        padding-right: 15px;
+        min-height: 30vh;
+        border: 10px solid rgb(31, 33, 37)
+    }
+    p{
+        font-size: 1.1em;
+    }
+    h3{
+        font-weight: 600;
+        font-size: 1.4em;
+    }
+    .form-control{
+        padding: 0px, 15px;
+        width: 90%;
+  }
+  .btn{
+    margin: 0px 0px 10px 0px;
+}
+#left-form{
+    background:#eee ;
+    height: 40vh;
+    width: 85%;
+    margin-top: 5vh;
+    margin-left: auto;
+    background-position: right;
+    color: rgb(35, 37, 40);
+    float: right;
+    text-align: right;
+    padding-top: 2vh;
+    padding-left: 15px;
+    padding-right: 5px;
+    min-height: 30vh;
+    border: 10px solid rgb(31, 33, 37);
+    line-height: 110%;
+    position: relative;
+    top: 50vh;
+    line-height: 100%;
+}
+#right-form{
+    background: rgb(35, 37, 40);
+    height: 45vh;
+    width: 85%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-position: left;
+    color: #eee;
+    float: left;
+    text-align: left;
+    padding-top: 2vh;
+    padding-left: 5px;
+    padding-right: 15px;
+    min-height: 30vh;
+    border: 10px solid rgb(31, 33, 37);
+    position: relative;
+    bottom: 45vh;
+    line-height: 100%;
+}
+.dropdown{
+    padding: 0px;
+    position: relative;
+    bottom: 15px;
+}
+#user-result-body{
+    background:#eee ;
+    height: 40vh;
+    width: 85%;
+    margin-top: 5vh;
+    /* background-position: right; */
+    color: rgb(35, 37, 40);
+    float: right;
+    text-align: right;
+    padding-top: 2vh;
+    padding-left: 15px;
+    padding-right: 5px;
+    min-height: 30vh;
+    border: 10px solid rgb(31, 33, 37);
+    line-height: 110%;
+}
+#map-holder{
+    background: rgb(35, 37, 40);
+    height: 45vh;
+    width: 85%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-position: left;
+    color: #eee;
+    float: left;
+    text-align: left;
+    padding-top: 2vh;
+    padding-left: 5px;
+    padding-right: 15px;
+    min-height: 30vh;
+    border: 10px solid rgb(31, 33, 37)
+}
+#map{
+    height:100%;
+    width:100%;
+    opacity: 1;
+    z-index: 2;
+    /* border: 10px solid rgb(31, 33, 37); */
+}
 
-    
 }
 
 /* MAYBE DO ONE MORE THAT'S EXTRA NARROW? */
