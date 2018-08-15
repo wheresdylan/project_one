@@ -129,7 +129,7 @@ $(document).ready(function () {
 
                 whatToEat = foodArray[Math.floor(Math.random() * foodArray.length)];
 
-                $("#decisionMade").html("Food Choice is: " + whatToEat);
+                $("#decisionMade").html("<h4>We've picked " + whatToEat + " for you!</h4>");
 
                 console.log(whatToEat);
 
@@ -168,7 +168,7 @@ $(document).ready(function () {
 
                 // To flip the coin
                 $('#coinFlip').show();
-
+                newBackgroundPlain(); 
                 var flipResult = Math.random();
                 $('#coin').removeClass();
                 setTimeout(function () {
@@ -234,13 +234,15 @@ $(document).ready(function () {
                             var newDiv = $("<div>");
                             newDiv.addClass("carousel-item");
                             newDiv.attr("id", i + "imageInput");
+                            // var placeHold = $("#location-Result");
+
 
                             $('.carousel-inner').append(newDiv);
-
+                            
 
                             //adds new image
                             var img = $('<img />').attr({
-                                'class': "d-block w-100",
+                                'class': "d-block w-100 carousel-fade",
                                 "href": restarauntSite,
                                 'src': featuredImage,
                                 'id': i
@@ -249,14 +251,15 @@ $(document).ready(function () {
 
                             // adds name of restaraunt
                             var restarauntHeading = $('<h4>');
-                            restarauntHeading.addClass("carousel-caption d-none d-md-block");
+                            // restarauntHeading.addClass("carousel-caption d-none d-md-block");
+                            restarauntHeading.addClass("carousel-caption");
                             restarauntHeading.attr("id", i);
                             restarauntHeading.attr("href", restarauntSite);
                             restarauntHeading.html(restaurantName);
 
                             $('#' + i + 'imageInput').append(restarauntHeading);
-
-
+                            
+                            
 
                             // //review for a certain restaurant with id
                             // var zomatoReview = "https://api.zomato.com/v1/reviews.json/" + restaurantId + "/user?count=5&apikey=df0e8b14ef12c3734454e5a4082ff386";
