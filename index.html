@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Decider: A Food Fight Resolution Tool</title>
+    <title>Restaurant Roulette: A Food Fight Resolution Tool</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Firebase -->
@@ -81,7 +81,7 @@
             <div class="col-sm-12" id="user-choice-body">
                 <form>
                     <div class="row">
-                        <div class="col-sm-6 slide">
+                        <div class="col-sm-6 slide lf">
                             <div id='left-form'>
                                 <h3>Second user:
                                     <br>Tell us what you'd prefer:</h3>
@@ -105,11 +105,11 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6 slide">
+                        <div class="col-sm-6 slide rf">
                             <div id='right-form'>
                                 <!--User 2 inputs  -->
                                 <h3>First user:
-                                    <br>What would you like to eat?</h3>
+                                    <br>What do you want to eat?</h3>
                                 <p>(Your first choice will weigh more heavily)</p>
                                 <br>
                                 <label class="dd-label" for "user2-Choice1">
@@ -140,59 +140,56 @@
 
     <!-- THIRD PAGE: THE DECISION AND RESTAURANT LOCATIONS -->
     <div class="container rounded" id="userResult" style="display: none;">
-        <!-- <h1 id="decisionMade">
-
-        </h1> -->
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 urb">
                 <div id="user-result-body">
                     <label for="formGroupExampleInput2">
-                        <p id="decisionMade"></p>
-                        <!-- The span below will display the user's final assigned pick: -->
-                        <p>
-                            <span id="final-food-choice"> </span>
-                        </p>
-                    </label>
-                    <div id="location-Result">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
-
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="http://cdn.shopify.com/s/files/1/0454/6253/t/80/assets/logo.png?10316760128230765480" alt="First slide">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                        <div id="decisionMade">
+                            <!-- The span below will display the user's final assigned pick: -->
+                            <h4>
+                                <span id="final-food-choice"> </span>
+                            </h4>
                         </div>
-
+                    </label>
+                
+                    <div id="restarauntImages">
+                        <div id="location-Result">
+                            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="assets/images/carousel_title.jpg" alt="First slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div id="restarauntImages">
-
-                </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mh">
                 <div id="map-holder">
-                    <p>Now...go eat:</p>
+                    <h4>Now...go eat:</h4>
                     <div id="map">
                     </div>
                 </div>
