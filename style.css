@@ -99,12 +99,12 @@ body, html {
 #left-form {
     position: relative;
     display: inline-block;
-    left: 450%; 
+    left: 600%; 
 }
 #right-form {
     position: relative;
     display: inline-block;
-    right: 450%; 
+    right: 600%; 
 }
 .slide{
     width: 100%;
